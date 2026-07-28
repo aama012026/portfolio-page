@@ -8,50 +8,87 @@
 	--underline-offset: 0.1em;
 
 	/* Colors */
-	--paper        : #f4ecdd;
-	--parchment    : #e7ddcc;
-	--hide         : #cfC3ae;
-	--linen        : #C9C0B1;
-	--dust         : #a79f94;
-	--slate        : #504b53;
-	--ink          : #2f2a27;
+	--c-paper       : #f4ecdd;
+	--c-parchment   : #e7ddcc;
+	--c-hide        : #cfC3ae;
+	--c-linen       : #C9C0B1;
+	--c-dust        : #a79f94;
+	--c-slate       : #504b53;
+	--c-coal        : #2f2a27;
+	--c-ink         : #242529;
+	--c-off         : #000000;
 
-	--timber       : #645147;
+	--c-timber      : #645147;
 
-	--rose         : #c69091;
-	--red          : #a03d4f;
-	--lipstick     : #7a2e48;
+	--c-rose        : #c69091;
+	--c-red         : #a03d4f;
+	--c-git-del     : #862d36;
+	--c-lipstick    : #7a2e48;
 
-	--yellow       : #d6b347;
-	--brass_shadow : #866e34;
+	--c-yellow      : #d6b347;
+	--c-git-mod     : #d3b020;
+	--c-brass-shadow: #866e34;
 
-	--apricot      : #dab382;
-	--copper       : #cb6e10;
-	--umber        : #7c562c;
+	--c-apricot     : #dab382;
+	--c-copper      : #cb6e10;
+	--c-orange      : #d3604f;
+	--c-umber       : #7c562c;
 
-	--lichen       : #96b09a;
-	--green        : #387559;
-	--pine         : #275443;
+	--c-lichen      : #96b09a;
+	--c-green       : #387559;
+	--c-git-add     : #21673b;
+	--c-pine        : #275443;
 
-	--sky          : #91bdcb;
-	--cyan         : #5ea8d6;
-	--blue         : #336175;
+	--c-mint        : #6c9197;
+	--c-teal        : #336175;
 
-	--lavender     : #9599be;
-	--indigo       : #4a5392;
-	--midnight     : #363a76;
+	--c-sky         : #91bdcb;
+	--c-cyan        : #5ea8d6;
+	--c-blue-mid    : #3882b7;
+	--c-blue-deep   : #1271A1;
 
-	--lilac        : #ac8fa2;
-	--purple       : #6d3a70;
-	--grape        : #56294f;
+	--c-lavender-lit: #cbcdf6;
+	--c-lavender-mid-new: #9b9ec6;
+	--c-lavender-mid-old: #9599be;
+	--c-lavender-dim: #7274a7;
+
+	--c-renamed     : #5c78e2;
+	--c-link-text   : #5b79e3;
+
+	--c-indigo-lit  : #7d82e8;
+	--c-indigo-mid  : #5e69c5;
+	--c-indigo-dim  : #4a5392;
+	--c-midnight    : #363a76;
+
+	--c-blush       : #dacbd0;
+	--c-lilac       : #ac8fa2;
+	--c-purple      : #6d3a70;
+	--c-grape       : #56294f;
+	/* New */
+	--c-term-bright_white: #FFFFFF;
+	--c-border-disabled: #d3d3d4;
+	--c-element-selected: #cacaca;
+	--git-ignored: #7e8086;
+	/* Transparent */
+	--c-git-word-del: #f85149cc;
+	--c-git-word-add: #2ea04859;
+	--c-conflict-bg: #e4ca8a80;
+	--c-search-match-bg: #5c69e266;
+	--c-search-active-bg: #d0a92366;
+	--c-scrollbar-thumb-bg: #7ba6f840;
+	--c-scrollbar-thumb-bg-hover: #669bff80;
+	--c-scrollbar-thumb-active-bg: #4e74c2b0;
+	--c-scrollbar-thumb-border: #bbd0fab3;
+	--c-scrollbar-track-border: #4681f040;
+
 
 	/* Fallback values in case we forget to specify class in top
 	element. We use the classes below to override the variables */
-	--c-fg: var(--paper);
-	--c-bg: var(--purple);
-	--c-fg-dim: var(--parchment);
+	--c-fg: var(--c-paper);
+	--c-bg: var(--c-purple);
+	--c-fg-dim: var(--c-parchment);
 	--c-gradient: var(--c-fg-dim);
-	--border: 2px solid var(--lilac);
+	--border: 2px solid var(--c-lilac);
 
 	/* Palettes */
 
@@ -60,19 +97,19 @@
 	fully independent and can consist of completely different colors.
 	This also allow us to reuse html across pages, f.ex. w/templates. */
 	& .composer {
-		--c-primary: var(--paper);
-		--c-accent: var(--indigo);
-		--c-primary-dim: var(--parchment);
-		--c-accent-dim: var(--lavender);
-		--c-gradient: var(--lavender);
+		--c-primary: var(--c-paper);
+		--c-accent: var(--c-indigo-dim);
+		--c-primary-dim: var(--c-parchment);
+		--c-accent-dim: var(--c-lavender-mid-old);
+		--c-gradient: var(--c-lavender-mid-old);
 	}
 
 	& .coder {
-		--c-primary: var(--indigo);
-		--c-accent: var(--paper);
-		--c-primary-dim: var(--lavender);
-		--c-accent-dim: var(--parchment);
-		--c-gradient: var(--lavender);
+		--c-primary: var(--c-indigo-dim);
+		--c-accent: var(--c-paper);
+		--c-primary-dim: var(--c-lavender-mid-old);
+		--c-accent-dim: var(--c-parchment);
+		--c-gradient: var(--c-lavender-mid-old);
 	}
 
 	/* Color override styles */
@@ -90,13 +127,14 @@
 		--c-link-bright: var(--c-accent);
 		--border: 2px solid var(--c-primary-dim);
 	}
+
 	& .mid-tone {
-		--c-fg: var(--paper);
-		--c-bg: var(--hide);
-		--c-link: var(--parchment);
+		--c-fg: var(--c-indigo-dim);
+		--c-bg: var(--c-parchment);
+		--c-link: var(--c-parchment);
 		--c-link-bright: var(--c-paper);
-		--c-gradient: var(--linen);
-		--border: 1px solid var(--dust);
+		--c-gradient: var(--c-lavender-mid-old);
+		--border: 1px solid var(--c-hide);
 	}
 }
 
@@ -212,7 +250,7 @@ img.icon {
 	display: grid;
 	grid-template-rows: minmax(1fr, 1.5fr) 1fr 1fr;
 	& > * {
-		padding-left: 3vmin;
+		padding: 0 3vmin;
 		display: grid;
 		align-items: center;
 	}
@@ -232,44 +270,52 @@ img.icon {
 	& nav {
 		font-size: 18vmin;
 	}
-
+	& :has(a) {
+		background: var(--c-bg);
+	}
 }
-/*#grid-landing-page {
-	display: grid;
-	grid: 1fr 1fr / 1fr 1fr;
 
-	& * {
-		display: grid;
-		place-items: center;
+@media (orientation: landscape) {
+	#grid-landing-page {
+		& :has(a) {
+			background: none;
+		}
+		background: linear-gradient(to right, var(--c-paper) 50%, var(--c-indigo-dim) 50%);
+		grid: 1fr 3fr / 1fr 1fr;
+		& > h2 {
+			grid-column: span 2;
+			grid-template: auto / 1fr 1fr;
+			padding-bottom: 2em;
+			& * {
+				font-size: 6vw;
+			}
+			& :first-child {
+				place-self: end right;
+			}
+			& :last-child {
+				place-self: end left;
+			}
+		}
 		& a {
 			font-size: 9vw;
-			padding: 0 0.5ch;
 		}
-		&.coder {
-			align-items: end;
-			justify-content: right;
-			padding-right: 0.5ch;
-			&:has(a) {
-				align-items: center;
-			}
-		}
-		&.composer {
-			align-items: end;
-			justify-content: left;
-			padding-left: 0.5ch;
-			&:has(a) {
-				align-items: center;
-			}
-		}
-	}
+		& * {
 
-	& > h2 {
-		margin: 0;
-		grid-column: span 2;
-		grid-template-columns: 1fr 1fr;
-		place-items: stretch;
+			align-items: end;
+					&:has(a) {
+				align-items: center;
+			}
+			&.coder {
+				justify-content: right;
+				padding-right: 0.5ch;
+			}
+			&.composer {
+				justify-content: left;
+				padding-left: 0.5ch;
+			}
+		}
 	}
-}*/
+}
 
 /* Roles */
 .visually-hidden {
@@ -304,7 +350,7 @@ details.navlist {
 			width: 1em;
 			height: 1em;
 			background: linear-gradient(
-				to bottom, var(--c-fg), var(--c-gradient)
+				in oklab to bottom, var(--c-fg), var(--c-gradient)
 			);
 			background-clip: text;
 		}
@@ -419,7 +465,7 @@ div:has(.icon), a:has(.icon) {
 
 .text-gradient {
 	background: linear-gradient(
-		to bottom, var(--c-fg), 80%, var(--c-gradient)
+		in oklab to bottom, var(--c-fg), 80%, var(--c-gradient)
 	);
 	color: transparent;
 	--c-link: transparent;
@@ -429,7 +475,7 @@ div:has(.icon), a:has(.icon) {
 
 .border-gradient {
 	background: linear-gradient(
-		to bottom, var(--c-fg), 80%, var(--c-gradient)
+		in oklab to bottom, var(--c-fg), 80%, var(--c-gradient)
 	);
 	border: none;
 	width: 2px;
@@ -452,9 +498,9 @@ div:has(.icon), a:has(.icon) {
 	font-family: var(--font-family-primary);
 	font-weight: 400;
 	font-size: 1.1rem;
-	color: var(--copper);
-	background: var(--parchment);
-	border: 2px solid var(--copper);
+	color: var(--c-copper);
+	background: var(--c-parchment);
+	border: 2px solid var(--c-copper);
 	border-radius: 0.5em;
 	border-bottom: none;
 	border-bottom-left-radius: 0;
@@ -462,15 +508,15 @@ div:has(.icon), a:has(.icon) {
 
 	&:hover {
 		font-weight: 600;
-		text-decoration: underline solid var(--copper) 1px;
+		text-decoration: underline solid var(--c-copper) 1px;
 		text-underline-offset: 0.1em;
 	}
 
 	&.is-active {
-		color: var(--paper);
-		background: var(--copper);
-		border-color: var(--paper);
-		outline: solid 1px var(--apricot);
-		text-decoration-color:  var(--paper);
+		color: var(--c-paper);
+		background: var(--c-copper);
+		border-color: var(--c-paper);
+		outline: solid 1px var(--c-apricot);
+		text-decoration-color:  var(--c-paper);
 	}
 }
