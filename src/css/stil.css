@@ -6,7 +6,7 @@
 	--font-weight-bold:  400;
 	--fontSizeHeader: 2rem;
 	--underline-offset: 0.1em;
-	
+
 	/* Colors */
 	--paper        : #f4ecdd;
 	--parchment    : #e7ddcc;
@@ -15,36 +15,36 @@
 	--dust         : #a79f94;
 	--slate        : #504b53;
 	--ink          : #2f2a27;
-	
+
 	--timber       : #645147;
-	
+
 	--rose         : #c69091;
 	--red          : #a03d4f;
 	--lipstick     : #7a2e48;
-	
+
 	--yellow       : #d6b347;
 	--brass_shadow : #866e34;
-	
+
 	--apricot      : #dab382;
 	--copper       : #cb6e10;
 	--umber        : #7c562c;
-	
+
 	--lichen       : #96b09a;
 	--green        : #387559;
 	--pine         : #275443;
-	
+
 	--sky          : #91bdcb;
 	--cyan         : #5ea8d6;
 	--blue         : #336175;
-	
+
 	--lavender     : #9599be;
 	--indigo       : #4a5392;
 	--midnight     : #363a76;
-	
+
 	--lilac        : #ac8fa2;
 	--purple       : #6d3a70;
 	--grape        : #56294f;
-	
+
 	/* Fallback values in case we forget to specify class in top
 	element. We use the classes below to override the variables */
 	--c-fg: var(--paper);
@@ -52,9 +52,9 @@
 	--c-fg-dim: var(--parchment);
 	--c-gradient: var(--c-fg-dim);
 	--border: 2px solid var(--lilac);
-	
+
 	/* Palettes */
-	
+
 	/* Right now we are just flipping the colors between the palettes.
 	However, with the style overrides below, the palettes are in fact
 	fully independent and can consist of completely different colors.
@@ -66,7 +66,7 @@
 		--c-accent-dim: var(--lavender);
 		--c-gradient: var(--lavender);
 	}
-	
+
 	& .coder {
 		--c-primary: var(--indigo);
 		--c-accent: var(--paper);
@@ -74,7 +74,7 @@
 		--c-accent-dim: var(--parchment);
 		--c-gradient: var(--lavender);
 	}
-	
+
 	/* Color override styles */
 	& .primary {
 		--c-fg: var(--c-primary);
@@ -129,17 +129,17 @@ header {
 	grid-template-columns: 1fr auto 1fr;
 	align-items: start;
 	padding: 0.6em 1em 1em;
-	
+
 	& h1 {
 		justify-self: end;
 		font-size: var(--fontSizeHeader);
 		margin: 0;
 	}
-	
+
 	& .divider {
 		height: var(--fontSizeHeader);
 	}
-	
+
 	& details {
 		justify-self: start;
 	}
@@ -185,7 +185,7 @@ img.icon {
 	padding-top: 2em;
 	padding-bottom: 0;
 	margin-bottom: 0;
-	
+
 	& .tabline {
 		display: grid;
 		width: 80vw;
@@ -207,10 +207,37 @@ img.icon {
 	justify-content: center;
 }
 
+
 #grid-landing-page {
 	display: grid;
-	grid: 1fr 3fr / 1fr 1fr;
-	
+	grid-template-rows: minmax(1fr, 1.5fr) 1fr 1fr;
+	& > * {
+		padding-left: 3vmin;
+		display: grid;
+		align-items: center;
+	}
+	& h2 {
+		margin: 0;
+		grid-template-rows: 1fr 1fr;
+		& * {
+			font-size: 12vmin;
+		}
+		& :first-child {
+			align-self: end;
+		}
+		& :last-child {
+			align-self: start;
+		}
+	}
+	& nav {
+		font-size: 18vmin;
+	}
+
+}
+/*#grid-landing-page {
+	display: grid;
+	grid: 1fr 1fr / 1fr 1fr;
+
 	& * {
 		display: grid;
 		place-items: center;
@@ -235,14 +262,14 @@ img.icon {
 			}
 		}
 	}
-	
+
 	& > h2 {
 		margin: 0;
 		grid-column: span 2;
 		grid-template-columns: 1fr 1fr;
 		place-items: stretch;
 	}
-}
+}*/
 
 /* Roles */
 .visually-hidden {
@@ -267,7 +294,7 @@ details.navlist {
 				font-weight: 200;
 			}
 		}
-		
+
 		&::after {
 			content: "-";
 			font-weight: 600;
@@ -282,7 +309,7 @@ details.navlist {
 			background-clip: text;
 		}
 	}
-	
+
 	&:open summary::after {
 		content: "<"
 	}
@@ -295,7 +322,7 @@ details.navlist {
 	border-radius: 50%;
 	display: grid;
 	place-items: center;
-	
+
 	& svg {
 		width: 70%;
 		height: 70%;
@@ -335,7 +362,7 @@ a {
 	color: var(--c-link);
 	text-decoration: dashed underline 0.1em var(--c-link);
 	text-underline-offset: 0.16em;
-	
+
 	&:visited {
 		color:var(--c-link);
 		text-decoration-color: var(--c-link);
@@ -345,34 +372,34 @@ a {
 		text-decoration-color: var(--c-link-bright);
 		text-decoration-style: solid;
 	}
-	
+
 	&:has(.icon) {
 		text-decoration: none;
-		
+
 		&:visited {
 			color: black;
 			text-decoration: none;
 		}
-		
+
 		& span {
 			text-decoration: dashed 0.1em underline black;
 			text-underline-offset: var(--underline-offset);
 		}
-		
+
 		&:hover span {
 			text-decoration-style: solid;
 		}
 	}
-	
+
 	&.no-underline {
 		color: var(--c-link-bright);
 		text-decoration: none;
-		
+
 		&:visited {
 			color:var(--c-link-bright);
 			text-decoration: none;
 		}
-		
+
 		&:hover, &:focus {
 			color: var(--c-link-bright);
 			text-decoration: solid underline 2px var(--c-fg);
@@ -432,13 +459,13 @@ div:has(.icon), a:has(.icon) {
 	border-bottom: none;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-	
+
 	&:hover {
 		font-weight: 600;
 		text-decoration: underline solid var(--copper) 1px;
 		text-underline-offset: 0.1em;
 	}
-	
+
 	&.is-active {
 		color: var(--paper);
 		background: var(--copper);
