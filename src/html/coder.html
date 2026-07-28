@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Mikkel">
+	<link rel="stylesheet" href="/src/css/prism.css">
+	<link rel="stylesheet" href="/src/css/stil.css">
+	<script src="/lib/prism.js"></script>
+	<script src="/src/ts/web/coder.ts" type="module"></script>
+	<title>Mikkel - Coder</title>
+</head>
+
+<body class="coder primary">
+<header class="accent draw-bg border-rule-bot" >
+	<h1>
+		<a class ="no-underline text-gradient" href="/">Mikkel</a>
+	</h1>
+	<span class="divider border-gradient"></span>
+	<nav>
+		<details class="navlist" open>
+			<summary class="text-gradient">Coder</summary>
+			<ul>
+				<li><a href="/composer">composer</a></li>
+			</ul>
+		</details>
+	</nav>
+</header>
+
+<main>
+	<section class="source-code">
+		<div class="tabline">
+			<button id="btn-tab-html" class="btn-tab is-active">coder.html</button>
+			<button id="btn-tab-css" class="btn-tab">stil.css</button>
+			<button id="btn-tab-ts" class="btn-tab">main.ts</button>
+		</div>
+		<div class="responsive-grid">
+			<!-- Do not line break or white-space between <pre> and <code>!
+			Line numbers rely on formatting for positioning... -->
+			<pre><code id="coder-html" class="language-html line-numbers"></code></pre>
+			<pre><code id="stil-css" class="language-css line-numbers"></code></pre>
+			<pre><code id="main-ts" class="language-ts line-numbers"></code></pre>
+		</div>
+	</section>
+</main>
+
+<footer class="mid-tone">
+	<a class="icon-link" href="mailto:aama012026@gmail.com">
+		<div class="at-icon">
+			<svg class="icon" viewBox="0 0 24 24">
+				<circle cx="12" cy="12" r="4"/>
+				<path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
+			</svg>
+		</div>
+		<span>aama012026@gmail.com</span>
+	</a>
+	<a class="icon-link" href="https://github.com/aama012026" target="_blank">
+		<img class="icon" src="/assets/icons/GitHub_Invertocat_Black.svg"
+			alt="GitHub Invertocat Logo">
+		<span>GitHub</span>
+	</a>
+	<a class="icon-link" href="#" target="_blank">
+		<img class="icon" src="/assets/icons/InBug-Black.png"
+			alt="LinkedIn InBug Logo">
+		<span>LinkedIn</span>
+	</a>
+	<div class="icon-link">
+		<img class="icon" src="/assets/icons/map-pin-house.svg"
+			alt="Location pin">
+		<span>Bergen, Norway</span>
+	</div>
+</footer>
+</body>
+</html>
