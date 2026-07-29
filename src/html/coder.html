@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="/src/css/prism.css">
 	<link rel="stylesheet" href="/src/css/stil.css">
 	<script src="/lib/prism.js"></script>
-	<script src="/src/ts/web/coder.ts" type="module"></script>
+	<script type="module" src="/lib/datastar.js"></script>
+	<script type="module" src="/src/ts/web/coder.ts"></script>
 	<title>Mikkel - Coder</title>
 </head>
 
@@ -29,17 +30,17 @@
 
 <main>
 	<section class="source-code">
-		<div class="tabline">
-			<button id="btn-tab-html" class="btn-tab is-active">coder.html</button>
-			<button id="btn-tab-css" class="btn-tab">stil.css</button>
-			<button id="btn-tab-ts" class="btn-tab">main.ts</button>
+		<div class="tabline" data-signals:active-tab="1">
+			<button id="btn-tab-html" class="btn-tab" data-class:is-active="$activeTab===1" data-on:click="$activeTab=1">coder.html</button>
+			<button id="btn-tab-css" class="btn-tab" data-class:is-active="$activeTab===2" data-on:click="$activeTab=2">stil.css</button>
+			<button id="btn-tab-ts" class="btn-tab" data-class:is-active="$activeTab===3" data-on:click="$activeTab=3">main.ts</button>
 		</div>
 		<div class="responsive-grid">
 			<!-- Do not line break or white-space between <pre> and <code>!
 			Line numbers rely on formatting for positioning... -->
-			<pre><code id="coder-html" class="language-html line-numbers"></code></pre>
-			<pre><code id="stil-css" class="language-css line-numbers"></code></pre>
-			<pre><code id="main-ts" class="language-ts line-numbers"></code></pre>
+			<pre style="display:none" data-show="$activeTab===1"><code id="coder-html" class="language-html line-numbers"></code></pre>
+			<pre style="display:none" data-show="$activeTab===2"><code id="stil-css" class="language-css line-numbers"></code></pre>
+			<pre style="display:none" data-show="$activeTab===3"><code id="main-ts" class="language-ts line-numbers"></code></pre>
 		</div>
 	</section>
 </main>
