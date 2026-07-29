@@ -153,12 +153,17 @@ summary::after {
 	transition: font-weight 140ms;
 }
 
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
 /* Structure */
 body {
-	margin: 0;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 header {
@@ -248,7 +253,7 @@ img.icon {
 
 #grid-landing-page {
 	display: grid;
-	grid-template-rows: minmax(1fr, 1.5fr) 1fr 1fr;
+	grid-template-rows: 1.5fr 1fr 1fr;
 	& > * {
 		padding: 0 3vmin;
 		display: grid;
@@ -270,14 +275,14 @@ img.icon {
 	& nav {
 		font-size: 18vmin;
 	}
-	& :has(a) {
+	& nav:has(a) {
 		background: var(--c-bg);
 	}
 }
 
 @media (orientation: landscape) {
 	#grid-landing-page {
-		& :has(a) {
+		& nav:has(a) {
 			background: none;
 		}
 		background: linear-gradient(to right, var(--c-paper) 50%, var(--c-indigo-dim) 50%);
@@ -285,7 +290,6 @@ img.icon {
 		& > h2 {
 			grid-column: span 2;
 			grid-template: auto / 1fr 1fr;
-			padding-bottom: 2em;
 			& * {
 				font-size: 6vw;
 			}
@@ -296,13 +300,12 @@ img.icon {
 				place-self: end left;
 			}
 		}
-		& a {
+		& nav {
 			font-size: 9vw;
 		}
 		& * {
-
 			align-items: end;
-					&:has(a) {
+			&:has(a) {
 				align-items: center;
 			}
 			&.coder {
@@ -507,6 +510,7 @@ div:has(.icon), a:has(.icon) {
 	border-bottom-right-radius: 0;
 
 	&:hover {
+		cursor: pointer;
 		font-weight: 600;
 		text-decoration: underline solid var(--c-copper) 1px;
 		text-underline-offset: 0.1em;
