@@ -29,7 +29,53 @@
 </header>
 
 <main>
+	<section id="greeting" class="text">
+		<h1 class="text-gradient">Hey! You're here a little early...</h1>
+		<p>Things are still being set up around here, and so everything is a little rough around the edges. You can find this page's source code below, or, perhaps more insightful, check out my WIP Riftbound collection tracker <a
+			href="https://rb-collection-tracker.alvheimase.com"
+		>here</a> (more about the project below).</p>
+	</section>
+	<section id="rb-collection-tracker" class="coder accent draw-bg">
+		<div class="text">
+			<h2 class="text-gradient">Riftbound Collection Tracker</h2>
+			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a> WIP project tracks your collection of Riftbound TCG cards. It includes a <a target="_blank"
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
+			>lexer</a> and <a target="_blank"
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
+			>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.</p>
+			<p>The project is written in <a class="no-underline big-link text-gradient"
+				ref="https://www.typescriptlang.org/" target="_blank"
+			>typescript</a>, sits on a hetzner server in germany running debian, and is built in <a
+				class="no-underline big-link text-gradient"
+				href="https://bun.com/" target="_blank"
+			>bun</a> with <a class="no-underline big-link text-gradient"
+				href="https://data-star.dev/" target="_blank"
+			>data-star</a> as its framework. The data is stored in and queried from a <a
+				class="no-underline big-link text-gradient"
+				href="https://mariadb.com/docs" target="_blank"
+			>mariaDB</a> relational database colocated on the server and communicating over localhost.</p>
+			<p>You'll have to forgive the current, somewhat garish, color combination on the top <span class="italic"
+			>sort bar</span> and bottom <span class="italic">filter bar</span
+			>. The boxes in the sort bar can be dragged to reorder the sort order. This is all done through data-star signals, queried on the backend and patched on the client with a morphing strategy over SSE. The filters query and card count tracking has yet to be implemented.</p>
+			<p>If you're interested in looking at data-star in action, take a look at the <a
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
+				target="_blank"
+			>templates.html</a> file and look for data-attributes like <span class="italic"
+			>data-on:&lt;event&gt;</span>, <span class="italic"
+			>data-signals:&lt;signal-name&gt;</span>, <span class="italic"
+			>data-bind="&lt;expression&gt;"</span>, etc. The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p>
+			<p>If you want to look at the backend side, take a look at the SSE construction in <a
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts" target="_blank"
+			>sse.ts</a>. The events are streamed to the client with a simple ReadableStream object. To se my go at writing SQL stored procedures and functions, have a look at either <a
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank"
+			>createProcedures.ts</a> or <a
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank"
+			>createFunctions.ts</a> under src/schema/.</p>
+			<p><br><b>You are, of course, very welcome to hit me up with any questions, and I am more than happy to sit down and talk through the project and my thinking.</b></p>
+		</div>
+	</section>
 	<section class="source-code">
+		<h2>Source Code</h2>
 		<div class="tabline" data-signals:active-tab="1">
 			<button id="btn-tab-html" class="btn-tab" data-class:is-active="$activeTab===1" data-on:click="$activeTab=1">coder.html</button>
 			<button id="btn-tab-css" class="btn-tab" data-class:is-active="$activeTab===2" data-on:click="$activeTab=2">stil.css</button>
