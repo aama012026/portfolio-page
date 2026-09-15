@@ -168,6 +168,7 @@ body {
 
 header {
 	/* We're using grid to justify the h1 and nav around a centered divider. */
+	min-width: 100%;
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
 	align-items: start;
@@ -225,15 +226,24 @@ img.icon {
 }
 
 .text {
+	margin-left: auto;
+	margin-right: auto;
 	width: 100%;
 	max-width: 55rem;
 }
 
-.source-code {
-	padding-top: 2em;
-	padding-bottom: 0;
-	margin-bottom: 0;
+section {
+	padding: 2em 0 3em;
+}
 
+.source-code {
+	min-height: 100dvh;
+	min-width: 100dvw;
+	& h2 {
+		text-align: center;
+		font-size: 2rem;
+		margin-bottom: 1em;
+	}
 	& .tabline {
 		display: grid;
 		width: 80vw;
@@ -246,8 +256,9 @@ img.icon {
 }
 
 .responsive-grid {
-	margin: 0;
+	min-width: 100%;
 	padding: 0 1em 2em;
+	margin: 0;
 	display: grid;
 	/* TODO: Some weirdness is affecting header and footer
 	when specifying template columns w/just auto. (Firefox) */
@@ -422,7 +433,19 @@ footer {
 }
 
 h1 {
+	margin-bottom: 0.5lh;
 	font-weight: 300;
+}
+
+h2 {
+	margin-bottom: 0.7em;
+	font-weight: 400;
+}
+
+p {
+	font-size: 1.2rem;
+	margin-bottom: 0.5lh;
+	color: var(--c-fg);
 }
 
 a {
@@ -439,6 +462,7 @@ a {
 		text-decoration-color: var(--c-link);
 	}
 	&:hover, &:focus {
+		cursor: pointer;
 		color: var(--c-link-bright);
 		text-decoration-color: var(--c-link-bright);
 		text-decoration-style: solid;
@@ -488,6 +512,10 @@ div:has(.icon), a:has(.icon) {
 	gap: 0.4em;
 }
 
+.italic {
+	font-style: italic;
+}
+
 .text-gradient {
 	background: linear-gradient(
 		in oklab to bottom, var(--c-fg), 80%, var(--c-gradient)
@@ -516,8 +544,6 @@ div:has(.icon), a:has(.icon) {
 	font-weight: 350;
 	--font-weight-bold: 550;
 }
-
-
 
 .btn-tab {
 	font-family: var(--font-family-primary);
