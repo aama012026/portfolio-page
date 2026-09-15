@@ -109,7 +109,7 @@
 		--c-accent: var(--c-paper);
 		--c-primary-dim: var(--c-lavender-mid-old);
 		--c-accent-dim: var(--c-parchment);
-		--c-gradient: var(--c-lavender-mid-old);
+		--c-gradient: var(--c-lavender-mid-new);
 	}
 
 	/* Color override styles */
@@ -131,8 +131,8 @@
 	& .mid-tone {
 		--c-fg: var(--c-indigo-dim);
 		--c-bg: var(--c-parchment);
-		--c-link: var(--c-parchment);
-		--c-link-bright: var(--c-paper);
+		--c-link: black;
+		--c-link-bright: var(--c-indigo-dim);
 		--c-gradient: var(--c-lavender-mid-old);
 		--border: 1px solid var(--c-hide);
 	}
@@ -222,6 +222,11 @@ details {
 
 img.icon {
 	height: 1em;
+}
+
+.text {
+	width: 100%;
+	max-width: 55rem;
 }
 
 .source-code {
@@ -317,6 +322,23 @@ img.icon {
 				padding-left: 0.5ch;
 			}
 		}
+	}
+}
+
+#hero {
+	margin: 0 auto;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: stretch;
+	justify-content: start;
+	min-height: 100%;
+	& h1 {
+		font-size: 4rem;
+		margin: 2em 0 1em;
+	}
+	& p {
+		font-size: 1.4rem;
+		line-height: 1.4;
 	}
 }
 
