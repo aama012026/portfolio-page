@@ -6,7 +6,7 @@ const PUBLIC_SRC_FILES: string[] = [
 	'html/coder.html',
 	'html/composer.html',
 	'html/index.html',
-	'css/stil.css'
+	'../assets/css/stil.css'
 ] as const
 
 PUBLIC_SRC_FILES.forEach(filePath => {
