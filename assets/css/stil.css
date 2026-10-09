@@ -236,6 +236,49 @@ section {
 	padding: 2em 0 3em;
 }
 
+.tech-icons {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 6em;
+	height: 6em;
+	& img {height: 4em;}
+}
+img[data-badge="html"] {
+	height: 5.3em;
+	align-self: start;
+}
+img[data-badge="css"], img[data-badge="ts"], img[data-badge="js"] {
+	height: 4em;
+}
+img[data-badge="cs"] {
+	height: 5em;
+}
+img[data-badge="odin"] {
+	height: 3.4em;
+}
+img[data-badge="bun"] {
+	align-self: start;
+	height: 2.5em;
+	margin-top: 1.7em;
+}
+img[data-badge="node"] {
+	align-self: start;
+	height: 2.5em;
+	margin-top: 1.6em;
+}
+img[data-badge="mariadb"] {
+	align-self: start;
+	margin-top: 1.7em;
+	height: 3em;
+}
+
+img[data-badge="js"], img[data-badge="odin"],
+img[data-badge="react"], img[data-badge="node"] {
+	margin-right: 2em;
+}
+
 .source-code {
 	min-height: 100dvh;
 	min-width: 100dvw;
@@ -353,6 +396,19 @@ section {
 	}
 }
 
+#values hgroup {
+	display: flex;
+	justify-content: space-around;
+	& p {
+		font-size: 2rem;
+		font-weight: 600;
+	}
+}
+
+#technologies {
+	padding: 3em 0 3em;
+}
+
 /* Roles */
 .visually-hidden {
 	display: none;
@@ -443,7 +499,7 @@ h2 {
 }
 
 p {
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	margin-bottom: 0.5lh;
 	color: var(--c-fg);
 }

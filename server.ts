@@ -3,6 +3,7 @@ import coder from './src/html/coder.html'
 import composer from './src/html/composer.html'
 
 const server = Bun.serve({
+	port: 3001,
 	routes: {
 		'/': index,
 		'/coder': coder,
