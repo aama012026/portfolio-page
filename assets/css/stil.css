@@ -1,3 +1,39 @@
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../fonts/SourceCodePro-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../fonts/SourceCodePro-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-Italic-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sen';
+    src: url('../fonts/Sen-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
 	/* Layout variables */
 	--ff-primary: 'Source Sans 3';
