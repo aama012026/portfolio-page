@@ -1,0 +1,31 @@
+export function sseResponse(
+	req: Request,
+	events: AsyncIterable<string>,
+	serverTimings: string[],
+	...preferredEncoding: Encoding[]
+): Response {
+	const headers: Record<string, string> = {
+		'Content-Type': 'text/event-stream',
+		'Cache-Control': 'no-cache',
+		'Vary': 'Accept-Encoding',
+		'Server-Timing': serverTimings.join(', ')
+	}
+	// Pick an available text compression encoding from our preferred list.
+	const encoding = pickEncoding(req, ...preferredEncoding)
+	const stage = encoding ? encoders[encoding]() : new PassThrough()
+	if(encoding) {headers['Content-Encoding'] = encoding}
+
+	pipeline(Readable.from(events), stage, (err) => {
+		// Premature close is the normal "aborted on client" case.
+		if(err && (
+			err as NodeJS.ErrnoException
+		).code !== 'ERR_STREAM_PREMATURE_CLOSE') {
+			console.error('SSE stream failed:', err)
+		}
+	})
+	req.signal.addEventListener('abort', () => stage.destroy(), {once: true})
+
+	return new Response(
+		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
+	)
+}
