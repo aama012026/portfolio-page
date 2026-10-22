@@ -250,29 +250,44 @@ details {
 img.icon {height: 1em;}
 
 .text {
-	margin-left: auto;
+	--min-gap: 2rem;
+	margin-left:  auto;
 	margin-right: auto;
+	padding-left: var(--min-gap);
+	padding-right: var(--min-gap);
 	width: 100%;
-	max-width: 55rem;
+	max-width: calc(55rem + var(--min-gap));
 }
 
 section {padding: 2em 0 3em;}
 
 .tech-icons {
+	margin-left: 2em;
+	margin-right: 2em;
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	padding: 0 6em;
-	height: 6em;
-	& img {height: 4em;}
+	column-gap: 2em;
+	& > div {
+		height: 7em;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+	}
+}
+.tech-icons img {
+	height: 4em;
+}
+
+a:has(img[data-badge="html"]) {
+	justify-self: start;
+	margin-bottom: 0.7em;
 }
 img[data-badge="html"] {
 	height: 5.3em;
-	align-self: start;
-}
-img[data-badge="css"], img[data-badge="ts"], img[data-badge="js"] {
-	height: 4em;
 }
 img[data-badge="cs"] {
 	height: 5em;
@@ -281,24 +296,14 @@ img[data-badge="odin"] {
 	height: 3.4em;
 }
 img[data-badge="bun"] {
-	align-self: start;
 	height: 2.5em;
-	margin-top: 1.7em;
+	margin-top: 0.2em;
 }
 img[data-badge="node"] {
-	align-self: start;
 	height: 2.5em;
-	margin-top: 1.6em;
 }
 img[data-badge="mariadb"] {
-	align-self: start;
-	margin-top: 1.7em;
 	height: 3em;
-}
-
-img[data-badge="js"], img[data-badge="odin"],
-img[data-badge="react"], img[data-badge="node"] {
-	margin-right: 2em;
 }
 
 .source-code {
@@ -404,6 +409,8 @@ img[data-badge="react"], img[data-badge="node"] {
 
 #values hgroup {
 	display: flex;
+	flex-flow: row wrap;
+	column-gap: 2rem;
 	justify-content: space-around;
 	& p {
 		font-size: 2rem;
