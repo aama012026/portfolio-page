@@ -280,6 +280,10 @@ section {padding: 2em 0 3em;}
 }
 .tech-icons img {
 	height: 4em;
+	transition: scale 90ms;
+	&:hover {
+		scale: 1.1;
+	}
 }
 
 a:has(img[data-badge="html"]) {
