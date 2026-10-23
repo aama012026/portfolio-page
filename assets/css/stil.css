@@ -249,7 +249,7 @@ details {
 
 img.icon {height: 1em;}
 
-.text {
+.text, pre {
 	--min-gap: 2rem;
 	margin-left:  auto;
 	margin-right: auto;

@@ -166,10 +166,12 @@
 				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank"
 			>createFunctions.ts</a> under src/schema/.</p>
 			<p><br><b>You are, of course, very welcome to hit me up with any questions, and I am more than happy to sit down and talk through the project and my thinking.</b></p>
-			<section>
-				<h3>Making a performant, but responsive web page with data-star</h3>
-				<pre><code
-					id="chunk-streaming" class="language-ts line-numbers"
+
+		</div>
+		<section class="text">
+			<h3>Making a performant, but responsive web page with data-star</h3>
+			<pre><code
+				id="chunk-streaming" class="language-ts line-numbers"
 >const CHUNK_SIZE = 50
 const PREFERRED_ENCODING: Encoding[] = ['br','gzip']
 async function* streamCardRows(rows: string[]) {
@@ -190,7 +192,7 @@ async function* streamCardRows(rows: string[]) {
 		await Bun.sleep(0)
 	}
 }</code></pre><pre><code
-					id="sse-response" class="language-ts line-numbers"
+				id="sse-response" class="language-ts line-numbers"
 >export function sseResponse(
 	req: Request,
 	events: AsyncIterable<string>,
@@ -222,7 +224,7 @@ async function* streamCardRows(rows: string[]) {
 		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
 	)
 }</code></pre><pre><code
-					id="text-compression" class="language-ts line-numbers"
+				id="text-compression" class="language-ts line-numbers"
 >export function pickEncoding(
 	req: Request, ...preferred: Encoding[]
 ): Encoding | null {
@@ -246,8 +248,7 @@ async function* streamCardRows(rows: string[]) {
 	}
 	return null
 }</code></pre>
-			</section>
-		</div>
+		</section>
 	</section>
 	<section class="source-code">
 		<h2>Source Code</h2>
