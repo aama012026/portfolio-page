@@ -170,13 +170,82 @@
 				<h3>Making a performant, but responsive web page with data-star</h3>
 				<pre><code
 					id="chunk-streaming" class="language-ts line-numbers"
-				></code></pre>
-				<pre><code
+>const CHUNK_SIZE = 50
+const PREFERRED_ENCODING: Encoding[] = ['br','gzip']
+async function* streamCardRows(rows: string[]) {
+	if(rows.length === 0) {
+		yield patchElements(makeCardsTableBody(''))
+		return
+	}
+	// Replace the table body with the initial chunk
+	yield patchElements(
+		makeCardsTableBody(rows.slice(0, CHUNK_SIZE).join('\n'))
+	)
+	// Append every subsequent chunk
+	for(let i = CHUNK_SIZE; i < rows.length; i += CHUNK_SIZE) {
+		const elements = rows.slice(i, i + CHUNK_SIZE).join('\n')
+		yield patchElements(
+			elements, {selector: '#cards-table-body', mode: 'append'}
+		)
+		await Bun.sleep(0)
+	}
+}</code></pre><pre><code
 					id="sse-response" class="language-ts line-numbers"
-				></code></pre>
-				<pre><code
+>export function sseResponse(
+	req: Request,
+	events: AsyncIterable<string>,
+	serverTimings: string[],
+	...preferredEncoding: Encoding[]
+): Response {
+	const headers: Record<string, string> = {
+		'Content-Type': 'text/event-stream',
+		'Cache-Control': 'no-cache',
+		'Vary': 'Accept-Encoding',
+		'Server-Timing': serverTimings.join(', ')
+	}
+	// Pick an available text compression encoding from our preferred list.
+	const encoding = pickEncoding(req, ...preferredEncoding)
+	const stage = encoding ? encoders[encoding]() : new PassThrough()
+	if(encoding) {headers['Content-Encoding'] = encoding}
+
+	pipeline(Readable.from(events), stage, (err) => {
+		// Premature close is the normal "aborted on client" case.
+		if(err && (
+			err as NodeJS.ErrnoException
+		).code !== 'ERR_STREAM_PREMATURE_CLOSE') {
+			console.error('SSE stream failed:', err)
+		}
+	})
+	req.signal.addEventListener('abort', () => stage.destroy(), {once: true})
+
+	return new Response(
+		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
+	)
+}</code></pre><pre><code
 					id="text-compression" class="language-ts line-numbers"
-				></code></pre>
+>export function pickEncoding(
+	req: Request, ...preferred: Encoding[]
+): Encoding | null {
+	const header = req.headers.get('accept-encoding') ?? ''
+	const accepted = new Map<string, number>()
+	for(const part of header.split(',')) {
+		const [name, ...params] = part.trim().toLowerCase().split(';')
+		if(!name) {
+			continue
+		}
+		const qParam = params.find(p => p.trim().startsWith('q='))
+		const q = qParam ? Number(qParam.trim().slice(2)) : 1
+		accepted.set(name.trim(), Number.isNaN(q) ? 0 : q)
+	}
+	for(const encoding of preferred) {
+		/* An explicit entry wins over the `*` wildcard,
+		so `br;q=0, *` still refuses br. */
+		if((accepted.get(encoding) ?? accepted.get('*') ?? 0) > 0) {
+			return encoding
+		}
+	}
+	return null
+}</code></pre>
 			</section>
 		</div>
 	</section>

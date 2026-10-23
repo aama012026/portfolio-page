@@ -1,25 +1,22 @@
 declare const Prism: any;
+const EXAMPLES_PATH = '/assets/code-examples'
 
 type CodePage = {
 	sourceText: string,
-	button: Element,
 	view: Element,
 }
 
 const codeElements = {
 	coderHtml: {
 		sourceText: await getFileContent('/code/html/coder.html'),
-		button: queryExistingElement('#btn-tab-html'),
 		view: queryExistingElement('#coder-html'),
 	},
 	stilCss: {
 		sourceText: await getFileContent('/code/css/stil.css'),
-		button: queryExistingElement('#btn-tab-css'),
 		view: queryExistingElement('#stil-css'),
 	},
 	mainTs: {
 		sourceText: await getFileContent('/code/ts/coder.ts'),
-		button: queryExistingElement('#btn-tab-ts'),
 		view: queryExistingElement('#main-ts'),
 	}
 } satisfies Record<string, CodePage>;
