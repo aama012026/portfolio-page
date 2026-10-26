@@ -39,7 +39,7 @@
 	--ff-primary: 'Source Sans 3';
 	--ff-mono: 'Source Code Pro';
 	--ff-accent: 'Sen';
-	--font-weight-bold: 400;
+	--font-weight-bold: 600;
 	--fontSizeHeader: 2rem;
 	--underline-offset: 0.1em;
 
@@ -93,6 +93,9 @@
 
 	--c-indigo-lit  : #7d82e8;
 	--c-indigo-mid  : #5e69c5;
+	--c-indigo-hov: color-mix(in oklab,
+		var(--c-indigo-dim), var(--c-indigo-mid) 33%
+	);
 	--c-indigo-dim  : #4a5392;
 	--c-midnight    : #363a76;
 
@@ -121,10 +124,10 @@
 	/* Fallback values in case we forget to specify class in top
 	element. We use the classes below to override the variables */
 	--c-fg: var(--c-paper);
-	--c-bg: var(--c-purple);
+	--c-bg-mid: var(--c-purple);
 	--c-fg-dim: var(--c-parchment);
 	--c-gradient: var(--c-fg-dim);
-	--border: 2px solid var(--c-lilac);
+	--border-m: 2px solid var(--c-lilac);
 
 	/* Palettes */
 
@@ -133,45 +136,60 @@
 	fully independent and can consist of completely different colors.
 	This also allow us to reuse html across pages, f.ex. w/templates. */
 	& .composer {
-		--c-primary: var(--c-paper);
-		--c-accent: var(--c-indigo-dim);
+		--c-primary-lit: color-mix(in oklab, var(--c-paper), white 33%);
+		--c-primary-mid: var(--c-paper);
 		--c-primary-dim: var(--c-parchment);
-		--c-accent-dim: var(--c-lavender-mid-old);
+		--c-primary-brd: var(--c-parchment);
+		--c-accent-lit: var(--c-indigo-hov);
+		--c-accent-mid: var(--c-indigo-dim);
+		--c-accent-dim: var(--c-midnight);
+		--c-accent-brd: var(--c-lavender-mid-old);
 		--c-gradient: var(--c-lavender-mid-old);
 	}
 
 	& .coder {
 
-		--c-primary: var(--c-indigo-dim);
-		--c-accent: var(--c-paper);
-		--c-primary-dim: var(--c-lavender-mid-old);
+		--c-primary-lit: var(--c-indigo-hov);
+		--c-primary-mid: var(--c-indigo-dim);
+		--c-primary-dim: var(--c-midnight);
+		--c-primary-brd: var(--c-lavender-mid-old);
+		--c-accent-lit: color-mix(in oklab, var(--c-paper), white 33%);
+		--c-accent-mid: var(--c-paper);
 		--c-accent-dim: var(--c-parchment);
+		--c-accent-brd: var(--c-parchment);
 		--c-gradient: var(--c-lavender-mid-new);
 	}
 
 	/* Color override styles */
 	& .primary {
-		--c-fg: var(--c-primary);
-		--c-bg: var(--c-accent);
+		--c-fg: var(--c-primary-mid);
+		--c-bg-lit: var(--c-accent-lit);
+		--c-bg-mid: var(--c-accent-mid);
+		--c-bg-dim: var(--c-accent-dim);
 		--c-link: var(--c-primary-dim);
-		--c-link-bright: var(--c-primary);
-		--border: 2px solid var(--c-accent-dim);
+		--c-link-bright: var(--c-primary-mid);
+		--border-s: 1px solid var(--c-accent-brd);
+		--border-m: 2px solid var(--c-accent-brd);
 	}
 	& .accent {
-		--c-fg: var(--c-accent);
-		--c-bg: var(--c-primary);
+		--c-fg: var(--c-accent-mid);
+		--c-bg-lit: var(--c-primary-lit);
+		--c-bg-mid: var(--c-primary-mid);
+		--c-bg-dim: var(--c-primary-dim);
 		--c-link: var(--c-accent-dim);
-		--c-link-bright: var(--c-accent);
-		--border: 2px solid var(--c-primary-dim);
+		--c-link-bright: var(--c-accent-mid);
+		--border-s: 1px solid var(--c-primary-brd);
+		--border-m: 2px solid var(--c-primary-brd);
 	}
 
 	& .mid-tone {
 		--c-fg: var(--c-indigo-dim);
-		--c-bg: var(--c-parchment);
+		--c-bg-mid: var(--c-parchment);
 		--c-link: black;
 		--c-link-bright: var(--c-indigo-dim);
 		--c-gradient: var(--c-lavender-mid-old);
-		--border: 1px solid var(--c-hide);
+		--border-s: 1px solid var(--c-hide);
+		--border-m: 1px solid var(--c-hide);
 	}
 
 	/* Global defaults */
@@ -202,6 +220,9 @@ body {
 
 header {
 	/* We're using grid to justify the h1 and nav around a centered divider. */
+	position: sticky;
+	top: 0;
+	z-index: 1;
 	min-width: 100%;
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
@@ -220,6 +241,7 @@ header {
 footer {
 	position: sticky;
 	bottom: 0;
+	z-index: 1;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5em 2em;
@@ -363,7 +385,7 @@ img[data-badge="mariadb"] {
 		}
 	}
 	& nav {font-size: 18vmin;}
-	& nav:has(a) {background: var(--c-bg);}
+	& nav:has(a) {background: var(--c-bg-mid);}
 }
 
 @media (orientation: landscape) {
@@ -427,7 +449,9 @@ img[data-badge="mariadb"] {
 /* Roles */
 .visually-hidden {display: none;}
 
-.draw-bg {background: var(--c-bg);}
+[data-bg="lit"] {background: var(--c-bg-lit);}
+[data-bg="mid"] {background: var(--c-bg-mid);}
+[data-bg="dim"] {background: var(--c-bg-dim);}
 
 .divider {
 	border: 1px solid var(--c-fg);
@@ -437,7 +461,7 @@ img[data-badge="mariadb"] {
 details.navlist {
 	& summary {
 		&:hover {
-			font-weight: 400;
+			font-weight: var(--font-weight-bold);
 			cursor: pointer;
 			&::after {font-weight: 200;}
 		}
@@ -471,7 +495,7 @@ details.navlist {
 	& svg {
 		width: 70%;
 		height: 70%;
-		stroke: var(--c-bg);
+		stroke: var(--c-bg-mid);
 		fill: none;
 		stroke-width: 3;
 	}
@@ -482,32 +506,54 @@ body {
 	font-family: var(--ff-primary);
 	font-weight: 300;
 	color: var(--c-fg);
-	background-color: var(--c-bg);
+	background-color: var(--c-bg-mid);
 }
 
 header {
-	background: var(--c-bg);
-	border-bottom: var(--border);
+	background: var(--c-bg-mid);
+	border-bottom: var(--border-m);
 }
 
 footer {
-	background: var(--c-bg);
-	border-top: var(--border);
+	background: var(--c-bg-mid);
+	border-top: var(--border-m);
 }
 
 h1 {
+	font-size: 4rem;
 	margin-bottom: 0.5lh;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 h2 {
-	margin-bottom: 0.7em;
+	font-size: 3rem;
+	margin-bottom: 2rem;
 	font-weight: 400;
+}
+h3 {
+	font-weight: var(--font-weight-bold);
+	font-size: 1.8rem;
+	margin-bottom: 1.8rem;
 }
 
 p {
 	font-size: 1.1rem;
 	margin-bottom: 0.5lh;
+	color: var(--c-fg);
+}
+
+p code, ul code {
+	background: var(--c-bg-dim);
+	font-family: var(--ff-mono);
+	padding: 0 0.25em 0.15em;
+	border-radius: 0.25em;
+	border: var(--border-s);
+}
+
+ul {
+	margin: 0.5lh;
+	font-size: 1.1rem;
+	list-style-position: inside;
 	color: var(--c-fg);
 }
 

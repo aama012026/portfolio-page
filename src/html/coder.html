@@ -13,14 +13,17 @@
 </head>
 
 <body class="coder primary">
-<header class="accent draw-bg border-rule-bot" >
+<header class="accent border-rule-bot" data-bg="lit">
 	<h1>
 		<a class ="no-underline" data-font="gradient" href="/">Mikkel</a>
 	</h1>
 	<span class="divider border-gradient"></span>
 	<nav>
-		<details class="navlist" open>
-			<summary data-font="gradient">Coder</summary>
+		<details class="navlist" open
+			data-signals:_prev-y="0"
+			data-on:scroll__window__once__passive="el.open = false"
+		>
+			<summary data-font="gradient mono">Coder</summary>
 			<ul>
 				<li><a href="/composer">composer</a></li>
 			</ul>
@@ -35,7 +38,7 @@
 			href="https://rb-collection-tracker.alvheimase.com"
 		>here</a> (more about the project below).</p>
 	</section>
-	<section id="values" class="accent draw-bg">
+	<section id="values" class="accent" data-bg="mid">
 		<hgroup class="text">
 			<h1 style="display: none;" aria-hidden="true">Values</h1>
 			<p data-font="gradient accent">Accessibility</p>
@@ -129,7 +132,7 @@
 			</div>
 		</div>
 	</section>
-	<section id="rb-collection-tracker" class="coder accent draw-bg">
+	<section id="rb-collection-tracker" class="coder accent" data-bg="mid">
 		<div class="text">
 			<h2 data-font="gradient accent">Riftbound Collection Tracker</h2>
 			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a> WIP project tracks your collection of Riftbound TCG cards. It includes a <a target="_blank"
@@ -154,10 +157,10 @@
 			<p>If you're interested in looking at data-star in action, take a look at the <a
 				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
 				target="_blank"
-			>templates.html</a> file and look for data-attributes like <span class="italic"
-			>data-on:&lt;event&gt;</span>, <span class="italic"
-			>data-signals:&lt;signal-name&gt;</span>, <span class="italic"
-			>data-bind="&lt;expression&gt;"</span>, etc. The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p>
+			>templates.html</a> file and look for data-attributes like <code
+			>data-on:&lt;event&gt;</code>, <code
+			>data-signals:&lt;signal-name&gt;</code>, <code
+			>data-bind="&lt;expression&gt;"</code>, etc. The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p>
 			<p>If you want to look at the backend side, take a look at the SSE construction in <a
 				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts" target="_blank"
 			>sse.ts</a>. The events are streamed to the client with a simple ReadableStream object. To see my go at writing SQL stored procedures and functions, have a look at either <a
@@ -169,7 +172,75 @@
 
 		</div>
 		<section class="text">
-			<h3>Making a performant, but responsive web page with data-star</h3>
+			<h3 data-font="gradient accent">Data-star: Making a performant but responsive website</h3>
+			<p>Datastar is a tiny but powerful frontend framework (<span class="italic">the entire library is a single 11.90KiB file</span>) that replaces the need for heavy libraries like react while also outclassing the competition in raw performance.
+				It does this somewhat ironically with two core principles:</p>
+			<ul>
+				<li>Put state on the backend.</li>
+				<li>Let the browser do what it is built for.</li>
+			</ul>
+			<p>It might seem strange for a frontend library's main feature to be its backend approach, but it does a couple of things for the developer and a couple of others for performance.
+				Firstly, by moving most of the state (<span class="italic"
+				>leaving UI</span>) to the backend, the need for a clientside script often largely disappears or dramatically simplifies (<span class="italic"
+				>the card gallery has no script besides the data-star library</span>).
+				In its place, datastar uses custom <code>data-*</code> attributes (<span class="italic">hence the name</span>), to register signals in the dom.
+				Take a look at the html for a sortbox, the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:</p>
+			<pre><code class="language-html line-numbers"
+>&lt;div class="sortbox badge-frame" draggable="true"
+	data-on:dragstart="$_draggedIdx = %{idx: number}"
+	data-on:dragend="@get('/cards')"
+	data-on:dragover="evt.preventDefault()"
+	data-on:dragenter="
+		const targetValue = {...$sortOrder[%{idx}]};
+		$sortOrder[%{idx}] = {...$sortOrder[$_draggedIdx]};
+		$sortOrder[$_draggedIdx] = {...targetValue};
+		$_draggedIdx = %{idx};
+"&gt;
+	&lt;div class="badge" data-flex="align-center"&gt;
+		&lt;span data-text="$sortOrder[%{idx}].col" data-gradient="text"&gt;
+		&lt;/span&gt;
+		&lt;button class="symbol" data-gradient="text"
+			data-text="$sortOrder[%{idx}].dir === 'ASC' ? '&#x25BC;' : '&#x25B2;'"
+			data-on:click="
+				if($sortOrder[%{idx}].dir === 'ASC') {
+					$sortOrder[%{idx}].dir = 'DESC'
+				}
+				else {
+					$sortOrder[%{idx}].dir = 'ASC'
+				}
+				@get('/cards')
+		"&gt;
+		&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<p>This is actually one of the wordier html-components.
+				Most signals in datastar become simple hookups and toggles which, if you're familiar to react, you'll recognize the patterns of.
+				There are three types of data-star signals in use here - The
+				<code>%{}</code> are mine.
+				They tell the html builder to escape to a parameter, similarly to the raw
+				<code>{}</code> to escape in .tsx:</p>
+			<ul>
+				<li><code>data-on:&lt;event&gt;</code>
+					lets us register an event listener with access to our datastar signals.
+					The signals are automatically created if they don't exist, and look like
+					<code>$signalName</code> if inside an expression
+					(<span class="italic">data-star converts between
+					<span data-font="mono">kebab-case</span> and <span data-font="mono">camelCase</span>
+					for signal names in attributes and expressions in order to follow the HTML-specs</span>).
+				</li>
+				<li><code>@get('/cards')</code>
+					sends a request to the server with the specified path.
+					All signals are included in the request (<span class="italic"
+					>as part of the url in case of the GET action</span>)
+					unless they begin with <code>_</code>.
+				</li>
+				<li><code>data-text</code>
+					binds a signal to the textContent attribute of the element.
+				</li>
+			</ul>
+				so <code>data-on:dragstart</code>
+				assigns an index to the <span data-font="mono">dragged-index</span>
+				signal
 			<pre><code
 				id="chunk-streaming" class="language-ts line-numbers"
 >const CHUNK_SIZE = 50
