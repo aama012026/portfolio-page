@@ -11,11 +11,8 @@ const server = Bun.serve({
 		'/code/:type/:file': async req => new Response(
 			await Bun.file(`./out/code/${req.params.type}/${req.params.file}`).text()
 		),
-		'/assets/css/:file': async req => new Response(
-			await Bun.file(`./assets/${req.params.file}`).text()
-		),
 		'/assets/:file': async req => new Response(
-			await Bun.file(`./assets/${req.params.file}`).text()
+			Bun.file(`./assets/${req.params.file}`)
 		)
 	}
 })
