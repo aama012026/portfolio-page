@@ -34,9 +34,12 @@
 <main>
 	<section id="greeting" class="text">
 		<h1 data-font="gradient">Hey! You're here a little early...</h1>
-		<p>Things are still being set up around here, and so everything is a little rough around the edges. You can find this page's source code below, or, perhaps more insightful, check out my WIP Riftbound collection tracker <a
-			href="https://rb-collection-tracker.alvheimase.com"
-		>here</a> (more about the project below).</p>
+		<p>Things are still being set up around here, and so everything is a little rough around the edges.
+			You can find this page's source code below, or, perhaps more insightful,
+			check out my WIP Riftbound collection tracker
+			<a target="_self" href="https://rb-collection-tracker.alvheimase.com">here</a>
+			(<span class="italics">more about the project below</span>).
+		</p>
 	</section>
 	<section id="values" class="accent" data-bg="mid">
 		<hgroup class="text">
@@ -45,10 +48,13 @@
 			<p data-font="gradient accent">Performance</p>
 			<p data-font="gradient accent">Security</p>
 		</hgroup>
-		<p class="text"> These features are often lacking in the modern web, so I try to focus on them in my learning and incorporate them in my work.
+		<p class="text">These features are often lacking in the modern web,
+			so I try to focus on them in my learning and incorporate them in my work.
 			It is not about optimization and eeking out every last drop of performance.
 			It is not about limiting ourselves to creating ugly websites in pure html.
-			It is about the low hanging fruits, a shift in mindset and priorities, an awareness we take with us into designing from the beginning.</p>
+			It is about the low hanging fruits, a shift in mindset and priorities,
+			an awareness we take with us into designing from the beginning.
+		</p>
 	</section>
 	<section id="technologies">
 		<h1 style="display: none;" aria-hidden="true">Technologies</h1>
@@ -142,8 +148,8 @@
 				WIP project tracks your collection of Riftbound TCG cards.
 				It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
 				>lexer</a> and <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
-				>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.</p
-			>
+				>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.
+			</p>
 			<p>The project is written in
 				<a class="no-underline big-link" data-font="gradient"
 					ref="https://www.typescriptlang.org/" target="_blank"
@@ -152,28 +158,28 @@
 					href="https://bun.com/" target="_blank">bun</a> with
 				<a class="no-underline big-link" data-font="gradient"
 					href="https://data-star.dev/" target="_blank"
-				>data-star</a> as its framework.
+				>Datastar</a> as its framework.
 				The data is stored in and queried from a
 				<a	class="no-underline big-link" data-font="gradient"
 					href="https://mariadb.com/docs" target="_blank"
 				>mariaDB</a>
-				relational database colocated on the server and communicating over localhost.</p
-			>
-			<p>You'll have to forgive the current, somewhat garish, color combination on the top
-				<span class="italic">sort bar</span> and bottom
-				<span class="italic">filter bar</span>.
+				relational database colocated on the server and communicating over localhost.
+			</p>
+			<p>There's a <span class="italic">sort bar</span>
+				above the table and a
+				<span class="italic">filter bar</span> beneath.
 				The boxes in the sort bar can be dragged to reorder the sort order.
-				This is all done through data-star signals, queried on the backend and patched on the client with a morphing strategy over SSE.
-				The filters query and card count tracking has yet to be implemented.</p
-			>
-			<p>If you're interested in looking at data-star in action, take a look at the
+				This is all done through Datastar signals, queried on the backend and patched on the client with a morphing strategy over SSE.
+				The filters query and card count tracking has yet to be implemented.
+			</p>
+			<p>If you're interested in looking at Datastar in action, take a look at the
 				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
 				>templates.html</a> file and look for data-attributes like
 				<code>data-on:&lt;event&gt;</code>,
 				<code>data-signals:&lt;signal-name&gt;</code>,
 				<code>data-bind="&lt;expression&gt;"</code>, etc.
-				The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p
-			>
+				The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.
+			</p>
 			<p>If you want to look at the backend side, take a look at the SSE construction in
 				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
 				>sse.ts</a>.
@@ -181,11 +187,11 @@
 				To see my go at writing SQL stored procedures and functions, have a look at either
 				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank">createProcedures.ts</a> or
 				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank">createFunctions.ts</a>
-				under src/schema/.</p
-			>
+				under src/schema/.
+			</p>
 			<p><br><b>You are, of course, very welcome to hit me up with any questions,
-				and I am more than happy to sit down and talk through the project and my thinking.</b
-			></p>
+				and I am more than happy to sit down and talk through the project and my thinking.</b>
+			</p>
 
 		</div>
 		<section class="text">
@@ -193,8 +199,8 @@
 			<p>Datastar is a tiny but powerful frontend framework
 				(<span class="italic">the entire library is a single 11.90KiB file</span>)
 				that replaces the need for heavy libraries like react while also outclassing the competition in raw performance.
-				It does this somewhat ironically with two core principles:</p
-			>
+				It does this somewhat ironically with two core principles:
+			</p>
 			<ul>
 				<li>Put state on the backend.</li>
 				<li>Let the browser do what it is built for.</li>
@@ -203,11 +209,13 @@
 				but it does a couple of things for the developer and a couple of others for performance.
 				Firstly, by moving most of the state (<span class="italic">leaving UI</span>) to the backend,
 				the need for a clientside script often largely disappears or dramatically simplifies
-				(<span class="italic">the card gallery has no script besides the data-star library</span>).
-				In its place, datastar uses custom <code>data-*</code> attributes
-				(<span class="italic">hence the name</span>), to register signals in the dom.
-				Take a look at the html for a sortbox, the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:</p
-			>
+				(<span class="italic">the card gallery has no script besides the Datastar library</span>).
+				In its place, datastar uses custom <code>data-*</code>
+				attributes (<span class="italic">hence the name</span>),
+				to register signals in the <abbr title="Document Object Model">DOM</abbr>.
+				Take a look at the html for a sortbox,
+				the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:
+			</p>
 			<pre><code class="language-html line-numbers"
 >&lt;div class="sortbox badge-frame" draggable="true"
 	data-on:dragstart="$_draggedIdx = %{idx: number}"
@@ -239,17 +247,17 @@
 			<p>This is actually one of the wordier html-components.
 				Most signals in datastar become simple hookups and toggles which,
 				if you're familiar with react, you'll recognize the abstract patterns of.
-				There are three types of data-star signals in use here, although the
+				There are three types of Datastar signals in use here, although the
 				<code>%{}</code> are mine.
 				They tell the html builder to escape to a parameter, similarly to the raw
-				<code>{}</code> to escape in .tsx:</p
-			>
+				<code>{}</code> to escape in .tsx:
+			</p>
 			<ul>
 				<li><code>data-on:&lt;event&gt;</code>
 					lets us register an event listener with access to our datastar signals.
 					The signals are automatically created if they don't exist, and look like
 					<code>$signalName</code> if inside an expression
-					(<span class="italic">data-star converts between
+					(<span class="italic">Datastar converts between
 						<span data-font="mono">kebab-case</span> and
 						<span data-font="mono">camelCase</span>
 						for signal names in attributes and expressions in order to follow the HTML-specs</span
@@ -265,26 +273,26 @@
 					binds a signal to the textContent attribute of the element.
 				</li>
 			</ul>
-			<p>There are about 20 or so attributes and 9 actions in data-star.
+			<p>There are about 20 or so attributes and 9 actions in Datastar.
 				This can greatly simplify the reactivity in the frontend,
 				but most of the speedup comes from sending text to the browser directly,
 				avoiding data synchronization and transformations in
 				<abbr title="Javascript">JS</abbr>
-				every time the server and client communicates.</p
-			>
+				every time the server and client communicates.
+			</p>
 			<p>Firstly, the <abbr title="Document Object Model">DOM</abbr> is really fast at ingesting text.
 				Receiving and sending text is its primary mechanism after all.
 				It is also incredibly good at compressing and decompressing text with a number of algorithms,
-				so by compressing our responses we get both fast and efficient data transfers.</p
-			>
+				so by compressing our responses we get both fast and efficient data transfers.
+			</p>
 			<p>Secondly, we can minimize the connection overhead and time between sending a request and receiving the start of the response by keeping a long-lived connection open and sending an event stream.
 				In fact, <abbr title="Server-sent Events">SSE</abbr>
-				is the primary and recommended way to update the client from the backend in data-star.
+				is the primary and recommended way to update the client from the backend in Datastar.
 				The pitch is twofold: As mentioned above, by updating the
 				<abbr title="Document Object Model">DOM</abbr> directly,
 				we bypass the slowest part of our website entirely.
 				In addition, we propose that internet speed is generally not the bottleneck in modern web-dev.
-				In fact, the creators of data-star claims, and demonstrates on their website, that with
+				In fact, the creators of Datastar claims, and demonstrates on their website, that with
 				<abbr title="Server-sent Events">SSE</abbr>
 				it is entirely doable to update the website at monitor refresh rates
 				(<span class="italic">144hz was the claim</span>) from the backend.</p
@@ -323,6 +331,25 @@
 	ssEvent += '\n'
 	return ssEvent
 }</code></pre>
+			<p>This one is a couple of lines longer to accomodate optional modifiers that can configure the event.
+				By default, Datastar morphs the outer
+				<abbr title="Hypertext Markup Language">HTML</abbr>
+				of elements based on their ID, but other
+				<abbr title="Document Object Model">DOM</abbr>
+				morphing strategies are available,
+				and you can use any valid CSS selector for the
+				<code>data: selector</code> line. In fact, as the next snippet shows,
+				my cards table is updated by first replacing the table body with the initial chunk of cards,
+				then appending each following chunk to the table body.
+			</p>
+			<p>I should mention
+				that datastar has <abbr title="Software development kits">SDKs</abbr>
+				in over 15 languages including Typescript,
+				but given that the two features above are really all you need to implement,
+				making your own gives you full control and understanding as well as tailored flow and ergonomics should you wish.
+			</p>
+			<p>That being said, let's look at how I update the card-table efficiently when the total response is approx. 5000 card rows and around 4.9-5.6MB in total:
+			</p>
 			<pre><code
 				id="chunk-streaming" class="language-ts line-numbers"
 >const CHUNK_SIZE = 50
@@ -344,7 +371,14 @@ async function* streamCardRows(rows: string[]) {
 		)
 		await Bun.sleep(0)
 	}
-}</code></pre><pre><code
+}</code></pre>
+		<p>This async generator takes an array of card rows
+			<abbr title="Hypertext Markup Language">HTML</abbr>
+			and chunks them up into Datastar events.
+			We pass this to a function generating the
+			<abbr title="Server-sent event">SSE</abbr> response:
+		</p>
+		<pre><code
 				id="sse-response" class="language-ts line-numbers"
 >export function sseResponse(
 	req: Request,
@@ -376,7 +410,29 @@ async function* streamCardRows(rows: string[]) {
 	return new Response(
 		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
 	)
-}</code></pre><pre><code
+}</code></pre>
+		<p>You can see that we take the request as an input parameter,
+			as well as some server timings and an optional list of preffered text compression encodings.
+			Note that we have to use the node stream
+			<abbr title="Application Programming Interface">API</abbr>
+			and then convert it to a web
+			<abbr title="Application Programming Interface">API</abbr> readable stream.
+			This is because we need to be able to flush the stream between chunks,
+			which the node <abbr title="Application Programming Interface">API</abbr>
+			exposes.
+		</p>
+		<p>
+			The snippet belows is how we pick our encoding. Put simply, we check the
+			<code class="nowrap">accept-encoding</code>
+			request header with a quality parameter higher than 0,
+			and pick the first from our preferred that is available.
+			For our /cards response this is generally Brotli with q=4,
+			typically giving us a text compression of 48x.
+			This is somewhat smaller than what brotli is capable of on larger pieces of text,
+			and stems from a tradeof between compression quality and speed.
+			We don't want to spend too long compressing small events.
+		</p>
+		<pre><code
 				id="text-compression" class="language-ts line-numbers"
 >export function pickEncoding(
 	req: Request, ...preferred: Encoding[]
@@ -401,6 +457,44 @@ async function* streamCardRows(rows: string[]) {
 	}
 	return null
 }</code></pre>
+		<p>So how does this compare to just sending all the card rows in a normal response?</p>
+		<p>Let's start with the baseline. From our server timings,
+			we know that about 30-50ms is spent querying our database.
+			Our database is a completely unoptimized, out of the box
+			<abbr title="Structured Query Language">SQL</abbr> database in mariaDB.
+			Further, we spend about 80-150ms building the
+			<abbr title="Hypertext Markup Language">HTML</abbr>
+			markup for each card row after the query.
+			This is the biggest time spend on the server,
+			and could easily be optimized away by caching the HTML on either the database or server.
+			Originally however, we spent about 150ms waiting on a response and 600ms - 900ms receiving it.
+			That made the 150ms or so the server took to generate the response irrelevant.
+			Even worse, a huge amount of time was spent while/after receiving on
+			<abbr title="Document Object Model">DOM</abbr> style computation and layout,
+			bringing the total time from reordering cards to seeing new cards on screen close to 3s!
+		</p>
+		<p>Converting to a stream
+			(<span class="italic">But still just sending a single monolithic event</span>)
+			and adding text compression reduced the receiving time to around 200ms-300ms,
+			but upped our waiting time to about 200-250ms.
+			We shaved off around 500ms on average, which is huge,
+			but largely unnoticable due to the majority of waiting happening on the client side.
+			There's quite a bit of complicated and co-dependent CSS logic on the table,
+			and some quick tricks can help out a bit, like setting
+			<code class="nowrap">content-visibility</code> and
+			<code class="nowrap">content-intrinsic-size</code> on table rows so that their
+			dynamic height is not calculated before entering the viewport and is saved after
+			they've been calculated even when they scroll out of view.
+			The change, however, that actually matter here is making the table column widths fixed.
+		</p>
+		<p>On its own, it shaves of maybe 50-100ms. Not that much.
+			But this way, when we add the chunking to the
+			<abbr title="Server-sent event">SSE</abbr> response,
+			the DOM has to do substantially fewer style recalcs and layout changes.
+			This reduces the time from the reorder event until you can start scrolling and interacting with the page to around 300ms,
+			about a 16x improvement! So now the main chunk of response time is spent on the server,
+			and remember, 150ms of these can be optimized away trivially.
+		</p>
 		</section>
 	</section>
 	<section class="source-code">
@@ -428,7 +522,7 @@ async function* streamCardRows(rows: string[]) {
 				<path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
 			</svg>
 		</div>
-		<span>aama012026@gmail.com</span>
+		<span>mikkel@alvheimase.com</span>
 	</a>
 	<a class="icon-link" href="https://github.com/aama012026" target="_blank">
 		<img class="icon" src="/assets/icons/GitHub_Invertocat_Black.svg"
