@@ -545,9 +545,14 @@ p {
 p code, ul code {
 	background: var(--c-bg-dim);
 	font-family: var(--ff-mono);
+	font-size: 1rem;
 	padding: 0 0.25em 0.15em;
 	border-radius: 0.25em;
 	border: var(--border-s);
+}
+
+code.nowrap {
+	white-space: nowrap;
 }
 
 ul {
@@ -555,6 +560,10 @@ ul {
 	font-size: 1.1rem;
 	list-style-position: inside;
 	color: var(--c-fg);
+}
+
+abbr:hover {
+	cursor: help;
 }
 
 a {

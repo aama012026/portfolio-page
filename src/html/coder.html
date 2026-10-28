@@ -45,7 +45,10 @@
 			<p data-font="gradient accent">Performance</p>
 			<p data-font="gradient accent">Security</p>
 		</hgroup>
-		<p class="text"> These features are often lacking in the modern web, so I try to focus on them in my learning and incorporate them in my work. It is not about optimization and eeking out every last drop of performance. It is not about limiting ourselves to creating ugly websites in pure html. It is about the low hanging fruits, a shift in mindset and priorities, an awareness we take with us into designing from the beginning.</p>
+		<p class="text"> These features are often lacking in the modern web, so I try to focus on them in my learning and incorporate them in my work.
+			It is not about optimization and eeking out every last drop of performance.
+			It is not about limiting ourselves to creating ugly websites in pure html.
+			It is about the low hanging fruits, a shift in mindset and priorities, an awareness we take with us into designing from the beginning.</p>
 	</section>
 	<section id="technologies">
 		<h1 style="display: none;" aria-hidden="true">Technologies</h1>
@@ -135,56 +138,76 @@
 	<section id="rb-collection-tracker" class="coder accent" data-bg="mid">
 		<div class="text">
 			<h2 data-font="gradient accent">Riftbound Collection Tracker</h2>
-			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a> WIP project tracks your collection of Riftbound TCG cards. It includes a <a target="_blank"
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
-			>lexer</a> and <a target="_blank"
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
-			>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.</p>
-			<p>The project is written in <a class="no-underline big-link" data-font="gradient"
-				ref="https://www.typescriptlang.org/" target="_blank"
-			>typescript</a>, sits on a hetzner server in germany running debian, and is built in <a
-				class="no-underline big-link" data-font="gradient"
-				href="https://bun.com/" target="_blank"
-			>bun</a> with <a class="no-underline big-link" data-font="gradient"
-				href="https://data-star.dev/" target="_blank"
-			>data-star</a> as its framework. The data is stored in and queried from a <a
-				class="no-underline big-link" data-font="gradient"
-				href="https://mariadb.com/docs" target="_blank"
-			>mariaDB</a> relational database colocated on the server and communicating over localhost.</p>
-			<p>You'll have to forgive the current, somewhat garish, color combination on the top <span class="italic"
-			>sort bar</span> and bottom <span class="italic">filter bar</span
-			>. The boxes in the sort bar can be dragged to reorder the sort order. This is all done through data-star signals, queried on the backend and patched on the client with a morphing strategy over SSE. The filters query and card count tracking has yet to be implemented.</p>
-			<p>If you're interested in looking at data-star in action, take a look at the <a
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
-				target="_blank"
-			>templates.html</a> file and look for data-attributes like <code
-			>data-on:&lt;event&gt;</code>, <code
-			>data-signals:&lt;signal-name&gt;</code>, <code
-			>data-bind="&lt;expression&gt;"</code>, etc. The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p>
-			<p>If you want to look at the backend side, take a look at the SSE construction in <a
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts" target="_blank"
-			>sse.ts</a>. The events are streamed to the client with a simple ReadableStream object. To see my go at writing SQL stored procedures and functions, have a look at either <a
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank"
-			>createProcedures.ts</a> or <a
-				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank"
-			>createFunctions.ts</a> under src/schema/.</p>
-			<p><br><b>You are, of course, very welcome to hit me up with any questions, and I am more than happy to sit down and talk through the project and my thinking.</b></p>
+			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a>
+				WIP project tracks your collection of Riftbound TCG cards.
+				It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
+				>lexer</a> and <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
+				>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.</p
+			>
+			<p>The project is written in
+				<a class="no-underline big-link" data-font="gradient"
+					ref="https://www.typescriptlang.org/" target="_blank"
+				>typescript</a>, sits on a hetzner server in germany running debian, and is built in
+				<a class="no-underline big-link" data-font="gradient"
+					href="https://bun.com/" target="_blank">bun</a> with
+				<a class="no-underline big-link" data-font="gradient"
+					href="https://data-star.dev/" target="_blank"
+				>data-star</a> as its framework.
+				The data is stored in and queried from a
+				<a	class="no-underline big-link" data-font="gradient"
+					href="https://mariadb.com/docs" target="_blank"
+				>mariaDB</a>
+				relational database colocated on the server and communicating over localhost.</p
+			>
+			<p>You'll have to forgive the current, somewhat garish, color combination on the top
+				<span class="italic">sort bar</span> and bottom
+				<span class="italic">filter bar</span>.
+				The boxes in the sort bar can be dragged to reorder the sort order.
+				This is all done through data-star signals, queried on the backend and patched on the client with a morphing strategy over SSE.
+				The filters query and card count tracking has yet to be implemented.</p
+			>
+			<p>If you're interested in looking at data-star in action, take a look at the
+				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
+				>templates.html</a> file and look for data-attributes like
+				<code>data-on:&lt;event&gt;</code>,
+				<code>data-signals:&lt;signal-name&gt;</code>,
+				<code>data-bind="&lt;expression&gt;"</code>, etc.
+				The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.</p
+			>
+			<p>If you want to look at the backend side, take a look at the SSE construction in
+				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
+				>sse.ts</a>.
+				The events are streamed to the client with a simple ReadableStream object.
+				To see my go at writing SQL stored procedures and functions, have a look at either
+				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank">createProcedures.ts</a> or
+				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank">createFunctions.ts</a>
+				under src/schema/.</p
+			>
+			<p><br><b>You are, of course, very welcome to hit me up with any questions,
+				and I am more than happy to sit down and talk through the project and my thinking.</b
+			></p>
 
 		</div>
 		<section class="text">
 			<h3 data-font="gradient accent">Data-star: Making a performant but responsive website</h3>
-			<p>Datastar is a tiny but powerful frontend framework (<span class="italic">the entire library is a single 11.90KiB file</span>) that replaces the need for heavy libraries like react while also outclassing the competition in raw performance.
-				It does this somewhat ironically with two core principles:</p>
+			<p>Datastar is a tiny but powerful frontend framework
+				(<span class="italic">the entire library is a single 11.90KiB file</span>)
+				that replaces the need for heavy libraries like react while also outclassing the competition in raw performance.
+				It does this somewhat ironically with two core principles:</p
+			>
 			<ul>
 				<li>Put state on the backend.</li>
 				<li>Let the browser do what it is built for.</li>
 			</ul>
-			<p>It might seem strange for a frontend library's main feature to be its backend approach, but it does a couple of things for the developer and a couple of others for performance.
-				Firstly, by moving most of the state (<span class="italic"
-				>leaving UI</span>) to the backend, the need for a clientside script often largely disappears or dramatically simplifies (<span class="italic"
-				>the card gallery has no script besides the data-star library</span>).
-				In its place, datastar uses custom <code>data-*</code> attributes (<span class="italic">hence the name</span>), to register signals in the dom.
-				Take a look at the html for a sortbox, the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:</p>
+			<p>It might seem strange for a frontend library's main feature to be its backend approach,
+				but it does a couple of things for the developer and a couple of others for performance.
+				Firstly, by moving most of the state (<span class="italic">leaving UI</span>) to the backend,
+				the need for a clientside script often largely disappears or dramatically simplifies
+				(<span class="italic">the card gallery has no script besides the data-star library</span>).
+				In its place, datastar uses custom <code>data-*</code> attributes
+				(<span class="italic">hence the name</span>), to register signals in the dom.
+				Take a look at the html for a sortbox, the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:</p
+			>
 			<pre><code class="language-html line-numbers"
 >&lt;div class="sortbox badge-frame" draggable="true"
 	data-on:dragstart="$_draggedIdx = %{idx: number}"
@@ -214,19 +237,23 @@
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 			<p>This is actually one of the wordier html-components.
-				Most signals in datastar become simple hookups and toggles which, if you're familiar to react, you'll recognize the patterns of.
-				There are three types of data-star signals in use here - The
+				Most signals in datastar become simple hookups and toggles which,
+				if you're familiar with react, you'll recognize the abstract patterns of.
+				There are three types of data-star signals in use here, although the
 				<code>%{}</code> are mine.
 				They tell the html builder to escape to a parameter, similarly to the raw
-				<code>{}</code> to escape in .tsx:</p>
+				<code>{}</code> to escape in .tsx:</p
+			>
 			<ul>
 				<li><code>data-on:&lt;event&gt;</code>
 					lets us register an event listener with access to our datastar signals.
 					The signals are automatically created if they don't exist, and look like
 					<code>$signalName</code> if inside an expression
 					(<span class="italic">data-star converts between
-					<span data-font="mono">kebab-case</span> and <span data-font="mono">camelCase</span>
-					for signal names in attributes and expressions in order to follow the HTML-specs</span>).
+						<span data-font="mono">kebab-case</span> and
+						<span data-font="mono">camelCase</span>
+						for signal names in attributes and expressions in order to follow the HTML-specs</span
+					>).
 				</li>
 				<li><code>@get('/cards')</code>
 					sends a request to the server with the specified path.
@@ -234,13 +261,68 @@
 					>as part of the url in case of the GET action</span>)
 					unless they begin with <code>_</code>.
 				</li>
-				<li><code>data-text</code>
+				<li><code class="nowrap">data-text</code>
 					binds a signal to the textContent attribute of the element.
 				</li>
 			</ul>
-				so <code>data-on:dragstart</code>
-				assigns an index to the <span data-font="mono">dragged-index</span>
-				signal
+			<p>There are about 20 or so attributes and 9 actions in data-star.
+				This can greatly simplify the reactivity in the frontend,
+				but most of the speedup comes from sending text to the browser directly,
+				avoiding data synchronization and transformations in
+				<abbr title="Javascript">JS</abbr>
+				every time the server and client communicates.</p
+			>
+			<p>Firstly, the <abbr title="Document Object Model">DOM</abbr> is really fast at ingesting text.
+				Receiving and sending text is its primary mechanism after all.
+				It is also incredibly good at compressing and decompressing text with a number of algorithms,
+				so by compressing our responses we get both fast and efficient data transfers.</p
+			>
+			<p>Secondly, we can minimize the connection overhead and time between sending a request and receiving the start of the response by keeping a long-lived connection open and sending an event stream.
+				In fact, <abbr title="Server-sent Events">SSE</abbr>
+				is the primary and recommended way to update the client from the backend in data-star.
+				The pitch is twofold: As mentioned above, by updating the
+				<abbr title="Document Object Model">DOM</abbr> directly,
+				we bypass the slowest part of our website entirely.
+				In addition, we propose that internet speed is generally not the bottleneck in modern web-dev.
+				In fact, the creators of data-star claims, and demonstrates on their website, that with
+				<abbr title="Server-sent Events">SSE</abbr>
+				it is entirely doable to update the website at monitor refresh rates
+				(<span class="italic">144hz was the claim</span>) from the backend.</p
+			>
+			<p>Datastar has two types of server-sent events:</p>
+			<pre><code id="patch-signals" class="language-ts line-numbers"
+>export function patchSignals(
+	data: Record<string, unknown>, onlyIfMissing: boolean = false
+): string {
+	const ssEvent = (
+		`event: datastar-patch-signals\n` +
+		`data: onlyIfMissing ${onlyIfMissing}\n` +
+		`data: signals ${JSON.stringify(data)}\n\n`
+	)
+	return ssEvent
+}</code></pre>
+			<p>The <code class="nowrap">datastar-patch-signals</code> event can patch, update and remove signals.
+				The naive function above also illustrates plainly the simple buildup of a
+				<abbr title="Server-sent event">SSE</abbr>.
+				Below is a function generating the second event type,
+				<code class="nowrap">datastar-patch-elements</code>.</p
+			>
+			<pre><code class="language-ts line-numbers"
+>export function patchElements(
+	elements: string, modifiers?: DatastarEventModifiers
+): string {
+	let ssEvent = `event: datastar-patch-elements\n`
+	if(modifiers) {
+		const {selector, mode, namespace, useViewTransition} = modifiers
+		ssEvent += selector ? `data: selector ${selector}\n` : ''
+		ssEvent += mode ? `data: mode ${mode}\n` : ''
+		ssEvent += namespace ? `data: namespace ${namespace}\n` : ''
+		ssEvent += useViewTransition ? `data: useViewTransition true\n` : ''
+	}
+	elements.split('\n').forEach(line => ssEvent += `data: elements ${line}\n`)
+	ssEvent += '\n'
+	return ssEvent
+}</code></pre>
 			<pre><code
 				id="chunk-streaming" class="language-ts line-numbers"
 >const CHUNK_SIZE = 50
