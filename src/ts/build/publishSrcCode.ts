@@ -10,6 +10,6 @@ const PUBLIC_SRC_FILES: string[] = [
 ] as const
 
 PUBLIC_SRC_FILES.forEach(filePath => {
-	const outPath = filePath.replace('ts/web', 'ts')
+	const outPath = filePath.replace('ts/web', 'ts').replace('../assets/css', 'css')
 	Bun.write(`${OUT}/${outPath}`, Bun.file(`${SRC}/${filePath}`))
 })
