@@ -219,7 +219,8 @@
 				Take a look at the html for a sortbox,
 				the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:
 			</p>
-			<pre><code class="language-html line-numbers"
+			<figure>
+				<pre><code class="language-html line-numbers"
 >&lt;div class="sortbox badge-frame" draggable="true"
 	data-on:dragstart="$_draggedIdx = %{idx: number}"
 	data-on:dragend="@get('/cards')"
@@ -247,6 +248,12 @@
 		&lt;/button&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre>
+				<figcaption>HTML templating for the rearrangable sortboxes above the cards table.
+					Excerpt from <a target="_blank"
+						href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
+					>templates.html</a>
+				</figcaption>
+			</figure>
 			<p>This is actually one of the wordier html-components.
 				Most signals in datastar become simple hookups and toggles which,
 				if you're familiar with react, you'll recognize the abstract patterns of.
@@ -301,7 +308,8 @@
 				(<span data-font="italic">144hz was the claim</span>) from the backend.
 			</p>
 			<p>Datastar has two types of server-sent events:</p>
-			<pre><code id="patch-signals" class="language-ts line-numbers"
+			<figure>
+				<pre><code id="patch-signals" class="language-ts line-numbers"
 >export function patchSignals(
 	data: Record<string, unknown>, onlyIfMissing: boolean = false
 ): string {
@@ -312,6 +320,10 @@
 	)
 	return ssEvent
 }</code></pre>
+				<figcaption>patchSignalsfunction from <a target="_blank"
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
+			>sse.ts</a></figcaption>
+			</figure>
 			<p>The <code class="nowrap">datastar-patch-signals</code>
 				event can patch, update and remove signals.
 				The naive function above also illustrates plainly the simple buildup of a
@@ -319,7 +331,8 @@
 				Below is a function generating the second event type,
 				<code class="nowrap">datastar-patch-elements</code>.
 			</p>
-			<pre><code class="language-ts line-numbers"
+			<figure>
+				<pre><code class="language-ts line-numbers"
 >export function patchElements(
 	elements: string, modifiers?: DatastarEventModifiers
 ): string {
@@ -335,6 +348,10 @@
 	ssEvent += '\n'
 	return ssEvent
 }</code></pre>
+			<figcaption>patchElements function from <a target="_blank"
+				href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
+			>sse.ts</a></figcaption>
+			</figure>
 			<p>This one is a couple of lines longer to accomodate optional modifiers that can configure the event.
 				By default, Datastar morphs the outer
 				<abbr title="Hypertext Markup Language">HTML</abbr>
@@ -354,8 +371,8 @@
 			</p>
 			<p>That being said, let's look at how I update the card-table efficiently when the total response is approx. 5000 card rows and around 4.9-5.6MB in total:
 			</p>
-			<pre><code
-				id="chunk-streaming" class="language-ts line-numbers"
+			<figure>
+				<pre><code id="chunk-streaming" class="language-ts line-numbers"
 >const CHUNK_SIZE = 50
 const PREFERRED_ENCODING: Encoding[] = ['br','gzip']
 async function* streamCardRows(rows: string[]) {
@@ -376,14 +393,19 @@ async function* streamCardRows(rows: string[]) {
 		await Bun.sleep(0)
 	}
 }</code></pre>
-		<p>This async generator takes an array of card rows
-			<abbr title="Hypertext Markup Language">HTML</abbr>
-			and chunks them up into Datastar events.
-			We pass this to a function generating the
-			<abbr title="Server-sent event">SSE</abbr> response:
-		</p>
-		<pre><code
-				id="sse-response" class="language-ts line-numbers"
+				<figcaption>Async generator for the card table body. Excerpt from
+					<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/routes/routeCards.ts"
+					>routeCards.ts</a>
+				</figcaption>
+			</figure>
+			<p>This async generator takes an array of card rows
+				<abbr title="Hypertext Markup Language">HTML</abbr>
+				and chunks them up into Datastar events.
+				We pass this to a function generating the
+				<abbr title="Server-sent event">SSE</abbr> response:
+			</p>
+			<figure>
+				<pre><code id="sse-response" class="language-ts line-numbers"
 >export function sseResponse(
 	req: Request,
 	events: AsyncIterable<string>,
@@ -415,29 +437,34 @@ async function* streamCardRows(rows: string[]) {
 		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
 	)
 }</code></pre>
-		<p>You can see that we take the request as an input parameter,
-			as well as some server timings and an optional list of preffered text compression encodings.
-			Note that we have to use the node stream
-			<abbr title="Application Programming Interface">API</abbr>
-			and then convert it to a web
-			<abbr title="Application Programming Interface">API</abbr> readable stream.
-			This is because we need to be able to flush the stream between chunks,
-			which the node <abbr title="Application Programming Interface">API</abbr>
-			exposes.
-		</p>
-		<p>
-			The snippet belows is how we pick our encoding. Put simply, we check the
-			<code class="nowrap">accept-encoding</code>
-			request header with a quality parameter higher than 0,
-			and pick the first from our preferred that is available.
-			For our /cards response this is generally Brotli with q=4,
-			typically giving us a text compression of 48x.
-			This is somewhat smaller than what brotli is capable of on larger pieces of text,
-			and stems from a tradeof between compression quality and speed.
-			We don't want to spend too long compressing small events.
-		</p>
-		<pre><code
-				id="text-compression" class="language-ts line-numbers"
+				<figcaption>sseResponse function from
+					<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
+					>sse.ts</a>
+				</figcaption>
+			</figure>
+			<p>You can see that we take the request as an input parameter,
+				as well as some server timings and an optional list of preffered text compression encodings.
+				Note that we have to use the node stream
+				<abbr title="Application Programming Interface">API</abbr>
+				and then convert it to a web
+				<abbr title="Application Programming Interface">API</abbr> readable stream.
+				This is because we need to be able to flush the stream between chunks,
+				which the node <abbr title="Application Programming Interface">API</abbr>
+				exposes.
+			</p>
+			<p>
+				The snippet belows is how we pick our encoding. Put simply, we check the
+				<code class="nowrap">accept-encoding</code>
+				request header with a quality parameter higher than 0,
+				and pick the first from our preferred that is available.
+				For our /cards response this is generally Brotli with q=4,
+				typically giving us a text compression of 48x.
+				This is somewhat smaller than what brotli is capable of on larger pieces of text,
+				and stems from a tradeof between compression quality and speed.
+				We don't want to spend too long compressing small events.
+			</p>
+			<figure>
+				<pre><code id="text-compression" class="language-ts line-numbers"
 >export function pickEncoding(
 	req: Request, ...preferred: Encoding[]
 ): Encoding | null {
@@ -461,44 +488,53 @@ async function* streamCardRows(rows: string[]) {
 	}
 	return null
 }</code></pre>
-		<p><b><i>So how does this compare to just sending all the card rows in a normal response?</i></b></p>
-		<p>Let's start with the baseline. From our server timings,
-			we know that about 30-50ms is spent querying our database.
-			Our database is a completely unoptimized, out of the box
-			<abbr title="Structured Query Language">SQL</abbr> database in mariaDB.
-			Further, we spend about 80-150ms building the
-			<abbr title="Hypertext Markup Language">HTML</abbr>
-			markup for each card row after the query.
-			This is the biggest time spend on the server,
-			and could easily be optimized away by caching the HTML on either the database or server.
-			Originally however, we spent about 150ms waiting on a response and 600ms - 900ms receiving it.
-			That made the 150ms or so the server took to generate the response irrelevant.
-			Even worse, a huge amount of time was spent while/after receiving on
-			<abbr title="Document Object Model">DOM</abbr> style computation and layout,
-			bringing the total time from reordering cards to seeing new cards on screen close to 3s!
-		</p>
-		<p>Converting to a stream
-			(<span data-font="italic">But still just sending a single monolithic event</span>)
-			and adding text compression reduced the receiving time to around 200ms-300ms,
-			but upped our waiting time to about 200-250ms.
-			We shaved off around 500ms on average, which is huge,
-			but largely unnoticable due to the majority of waiting happening on the client side.
-			There's quite a bit of complicated and co-dependent CSS logic on the table,
-			and some quick tricks can help out a bit, like setting
-			<code class="nowrap">content-visibility</code> and
-			<code class="nowrap">content-intrinsic-size</code> on table rows so that their
-			dynamic height is not calculated before entering the viewport and is saved after
-			they've been calculated even when they scroll out of view.
-			The change, however, that actually matter here is making the table column widths fixed.
-		</p>
-		<p>On its own, it shaves of maybe 50-100ms. Not that much.
-			But this way, when we add the chunking to the
-			<abbr title="Server-sent event">SSE</abbr> response,
-			the DOM has to do substantially fewer style recalcs and layout changes.
-			This reduces the time from the reorder event until you can start scrolling and interacting with the page to around 300ms,
-			about a 16x improvement! So now the main chunk of response time is spent on the server,
-			and remember, 150ms of these can be optimized away trivially.
-		</p>
+				<figcaption>The main function from
+					<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/pickEncoding.ts"
+					>pickEncoding.ts</a>
+				</figcaption>
+			</figure>
+			<p><b><i>So how does this compare to just sending all the card rows in a normal response?</i></b></p>
+			<p>Let's start with the baseline. From our server timings,
+				we know that about 30-50ms is spent querying our database.
+				Our database is a completely unoptimized, out of the box
+				<abbr title="Structured Query Language">SQL</abbr> database in mariaDB.
+				Further, we spend about 80-150ms building the
+				<abbr title="Hypertext Markup Language">HTML</abbr>
+				markup for each card row after the query.
+				This is the biggest time spend on the server,
+				and could easily be optimized away by caching the
+				<abbr title="Hypertext Markup Language">HTML</abbr>
+				on either the database or server.
+				Originally however, we spent about 150ms waiting on a response and 600ms - 900ms receiving it.
+				That made the 150ms or so the server took to generate the response irrelevant.
+				Even worse, a huge amount of time was spent while/after receiving on
+				<abbr title="Document Object Model">DOM</abbr> style computation and layout,
+				bringing the total time from reordering cards to seeing new cards on screen close to 3s!
+			</p>
+			<p>Converting to a stream
+				(<span data-font="italic">But still just sending a single monolithic event</span>)
+				and adding text compression reduced the receiving time to around 200ms-300ms,
+				but upped our waiting time to about 200-250ms.
+				We shaved off around 500ms on average, which is huge,
+				but largely unnoticable due to the majority of waiting happening on the client side.
+				There's quite a bit of complicated and co-dependent
+				<abbr title="Cascading Style Sheet">CSS</abbr> logic on the table,
+				and some quick tricks can help out a bit, like setting
+				<code class="nowrap">content-visibility</code> and
+				<code class="nowrap">content-intrinsic-size</code> on table rows so that their
+				dynamic height is not calculated before entering the viewport and is saved after
+				they've been calculated even when they scroll out of view.
+				The change, however, that actually matter here is making the table column widths fixed.
+			</p>
+			<p>On its own, it shaves of maybe 50-100ms. Not that much.
+				But this way, when we add the chunking to the
+				<abbr title="Server-sent event">SSE</abbr> response, the
+				<abbr title="Document Object Model">DOM</abbr>
+				has to do substantially fewer style recalcs and layout changes.
+				This reduces the time from the reorder event until you can start scrolling and interacting with the page to around 300ms,
+				about a 16x improvement! So now the main chunk of response time is spent on the server,
+				and remember, 150ms of these can be optimized away trivially.
+			</p>
 		</section>
 	</section>
 	<section class="source-code">

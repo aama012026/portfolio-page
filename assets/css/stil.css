@@ -27,6 +27,9 @@
 	--fontSizeHeader: 2rem;
 	--underline-offset: 0.1em;
 
+	--radius-r: 0.3em;
+	--radius-m: 0.5em;
+
 	/* Colors */
 	--c-paper       : #f4ecdd;
 	--c-parchment   : #e7ddcc;
@@ -433,12 +436,6 @@ img[data-badge="mariadb"] {
 #technologies {padding: 3em 0 3em;}
 
 /* Roles */
-.visually-hidden {display: none;}
-
-[data-bg="lit"] {background: var(--c-bg-lit);}
-[data-bg="mid"] {background: var(--c-bg-mid);}
-[data-bg="dim"] {background: var(--c-bg-dim);}
-
 .divider {
 	border: 1px solid var(--c-fg);
 	margin: 0 1em;
@@ -491,8 +488,8 @@ details.navlist {
 .font-reg {
 	font-family: var(--ff-primary);
 	font-feature-settings: "ss06" on, "zero" on;
-
 }
+
 .font-alt, h1, h2, h3, h4, h5, h6 {
 	font-family: var(--ff-accent);
 	--fw-s-slim: 400;
@@ -551,7 +548,7 @@ p code, ul code {
 	font-family: var(--ff-mono);
 	font-size: 1rem;
 	padding: 0 0.25em 0.15em;
-	border-radius: 0.25em;
+	border-radius: var(--radius-r);
 	border: var(--border-s);
 }
 
@@ -561,6 +558,16 @@ ul {
 	margin: 0.5lh;
 	list-style-position: inside;
 	color: var(--c-fg);
+}
+
+figure:has(pre + figcaption, figcaption + pre) {margin-bottom: 0.5lh;}
+figcaption {
+	padding: 0.1em 1em;
+	border: var(--border-s);
+	border-radius: var(--radius-m);
+	font-style: italic;
+	color: var(--c-fg);
+	background: color-mix(in oklab, var(--c-bg-dim), transparent 50%);
 }
 
 abbr:hover {cursor: help;}
@@ -631,7 +638,7 @@ div:has(.icon), a:has(.icon) {
 	gap: 0.4em;
 }
 
-[data-font~="small"], code {
+[data-font~="small"], code, figcaption {
 	--fw-slim: var(--fw-s-slim);
 	--fw-norm: var(--fw-s-norm);
 	--fw-semi: var(--fw-s-semi);
@@ -651,10 +658,14 @@ div:has(.icon), a:has(.icon) {
 
 [data-font~="slim"] {font-weight: var(--fw-slim);}
 [data-font~="norm"] {font-weight: var(--fw-norm);}
-b, abbr, [data-font~="semi"] {font-weight: var(--fw-semi);}
+b, abbr, .big-link [data-font~="semi"] {font-weight: var(--fw-semi);}
 strong, [data-font~="bold"] {font-weight: var(--fw-bold);}
 [data-font~="xtra"] {font-weight: var(--fw-xtra);}
 em, i, [data-font~="italic"] {font-style: italic;}
+
+[data-bg="lit"] {background: var(--c-bg-lit);}
+[data-bg="mid"] {background: var(--c-bg-mid);}
+[data-bg="dim"] {background: var(--c-bg-dim);}
 
 [data-font~="gradient"] {
 	background: linear-gradient(
@@ -680,10 +691,6 @@ em, i, [data-font~="italic"] {font-style: italic;}
 	font-size: 6vw;
 }
 
-.big-link {
-	font-weight: var(--fw-semi);
-}
-
 .btn-tab {
 	font-family: var(--ff-primary);
 	font-weight: 400;
@@ -691,7 +698,7 @@ em, i, [data-font~="italic"] {font-style: italic;}
 	color: var(--c-copper);
 	background: var(--c-parchment);
 	border: 2px solid var(--c-copper);
-	border-radius: 0.5em;
+	border-radius: var(--radius-m);
 	border-bottom: none;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;

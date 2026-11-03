@@ -40,8 +40,12 @@ pre[class*='language-']::selection {
 }
 pre[class*='language-'] {
 	padding: 1em;
-	margin: 0.5em 0;
+	margin: 0.5lh 0;
 	overflow: auto;
+
+	&:has(+ figcaption) {
+		margin-bottom: 0.25em;
+	}
 }
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
@@ -52,12 +56,11 @@ pre[class*='language-'] {
 	background: var(--c-paper);
 	/*margin: 1em;*/
 	margin-top: 0;
-	border-radius: 0.4em;
+	border-radius: var(--radius-m);
 	border: 1px solid var(--c-apricot);
 }
 :not(pre) > code[class*='language-'] {
 	padding: 0.1em;
-	border-radius: 0.3em;
 	white-space: normal;
 }
 .token.comment {
