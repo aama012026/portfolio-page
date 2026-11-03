@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Sen';
+    src: local('Sen'),
+        url('../fonts/Sen-VariableFont_wght.woff2') format('woff2');
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: local('Source Code Pro Italic'), local('SourceCodePro-Italic'),
+        url('../fonts/SourceCodePro-Italic-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: local('Source Code Pro'), local('SourceCodePro'),
+        url('../fonts/SourceCodePro-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: local('Source Sans 3 Italic'), local('SourceSans3-Italic'),
+        url('../fonts/SourceSans3-Italic-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: local('Source Sans 3'), local('SourceSans3'),
+        url('../fonts/SourceSans3-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: block;
+}
+

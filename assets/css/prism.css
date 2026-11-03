@@ -6,7 +6,7 @@ pre[class*='language-'] {
 	background: 0 0;
 	text-shadow: none;
 	font-family: 'Source Code Pro', 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-size: 1em;
+	font-size: 1rem;
 	font-weight: 300;
 	text-align: left;
 	white-space: pre;

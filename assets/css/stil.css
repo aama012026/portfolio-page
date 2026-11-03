@@ -1,45 +1,29 @@
-@font-face {
-    font-family: 'Source Code Pro';
-    src: url('../fonts/SourceCodePro-VariableFont_wght.ttf');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Source Code Pro';
-    src: url('../fonts/SourceCodePro-VariableFont_wght.ttf');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Source Sans 3';
-    src: url('../fonts/SourceSans3-VariableFont_wght.ttf');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Source Sans 3';
-    src: url('../fonts/SourceSans3-Italic-VariableFont_wght.ttf');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Sen';
-    src: url('../fonts/Sen-VariableFont_wght.ttf');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
 :root {
 	/* Layout variables */
 	--ff-primary: 'Source Sans 3';
 	--ff-mono: 'Source Code Pro';
 	--ff-accent: 'Sen';
-	--font-weight-bold: 600;
+
+	--fs-s: 1rem;
+	--fs-r: 1.25rem;
+	--fs-m: 1.5rem;
+	--fs-l: 2rem;
+
+	--fw-slim: 200;
+	--fw-norm: 300;
+	--fw-semi: 400;
+	--fw-bold: 500;
+	--fw-xtra: 600;
+
+	--fw-s-slim: 300;
+	--fw-s-norm: 400;
+	--fw-s-semi: 550;
+	--fw-s-bold: 700;
+	--fw-s-xtra: 800;
+
+	--fw-m-bold: 600;
+	--fw-m-xtra: 700;
+
 	--fontSizeHeader: 2rem;
 	--underline-offset: 0.1em;
 
@@ -193,7 +177,8 @@
 	}
 
 	/* Global defaults */
-	font-size: 1rem;
+	/*font-size: var(--fs-r);*/
+	font-weight: var(--fw-norm);
 }
 
 /* Animations */
@@ -284,6 +269,7 @@ img.icon {height: 1em;}
 section {padding: 2em 0 3em;}
 
 .tech-icons {
+	font-size: 1rem;
 	margin-left: 2em;
 	margin-right: 2em;
 	display: flex;
@@ -461,7 +447,7 @@ img[data-badge="mariadb"] {
 details.navlist {
 	& summary {
 		&:hover {
-			font-weight: var(--font-weight-bold);
+			font-weight: var(--fw-bold);
 			cursor: pointer;
 			&::after {font-weight: 200;}
 		}
@@ -502,9 +488,28 @@ details.navlist {
 }
 
 /* Style */
+.font-reg {
+	font-family: var(--ff-primary);
+	font-feature-settings: "ss06" on, "zero" on;
+
+}
+.font-alt, h1, h2, h3, h4, h5, h6 {
+	font-family: var(--ff-accent);
+	--fw-s-slim: 400;
+	--fw-l-bold: 600;
+
+	/* Sen is only 400...800*/
+	--fw-slim: 400;
+	--fw-norm: 400;
+	--fw-semi: 500;
+	--fw-bold: 600;
+}
+.font-mono, code {font-family: var(--ff-mono);}
+
 body {
 	font-family: var(--ff-primary);
-	font-weight: 300;
+	font-size: var(--fs-r);
+	font-weight: var(--fw-norm);
 	color: var(--c-fg);
 	background-color: var(--c-bg-mid);
 }
@@ -520,7 +525,7 @@ footer {
 }
 
 h1 {
-	font-size: 4rem;
+	font-size: 3.6rem;
 	margin-bottom: 0.5lh;
 	font-weight: 400;
 }
@@ -531,13 +536,12 @@ h2 {
 	font-weight: 400;
 }
 h3 {
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--fw-bold);
 	font-size: 1.8rem;
 	margin-bottom: 1.8rem;
 }
 
 p {
-	font-size: 1.1rem;
 	margin-bottom: 0.5lh;
 	color: var(--c-fg);
 }
@@ -551,22 +555,18 @@ p code, ul code {
 	border: var(--border-s);
 }
 
-code.nowrap {
-	white-space: nowrap;
-}
+code.nowrap {white-space: nowrap;}
 
 ul {
 	margin: 0.5lh;
-	font-size: 1.1rem;
 	list-style-position: inside;
 	color: var(--c-fg);
 }
 
-abbr:hover {
-	cursor: help;
-}
+abbr:hover {cursor: help;}
 
 a {
+	font-weight: var(--fw-semi);
 	&[data-font~="gradient"] {
 		--c-link: transparent;
 		--c-link-bright: transparent;
@@ -618,7 +618,7 @@ a {
 			color: var(--c-link-bright);
 			text-decoration: solid underline 2px var(--c-fg);
 			text-underline-offset: 0.16em;
-			font-weight: var(--font-weight-bold);
+			font-weight: var(--fw-xtra);
 		}
 	}
 }
@@ -631,10 +631,31 @@ div:has(.icon), a:has(.icon) {
 	gap: 0.4em;
 }
 
-.italic {font-style: italic;}
+[data-font~="small"], code {
+	--fw-slim: var(--fw-s-slim);
+	--fw-norm: var(--fw-s-norm);
+	--fw-semi: var(--fw-s-semi);
+	--fw-bold: var(--fw-s-bold);
+	--fw-xtra: var(--fw-s-xtra);
 
-[data-font~="mono"] {font-family: var(--ff-mono);}
-[data-font~="accent"] {font-family: var(--ff-accent);}
+	font-size: 1rem;
+	font-weight: var(--fw-norm);
+}
+[data-font~="regular"] {font-size: 1.25rem;}
+[data-font~="medium"] {
+	--fw-bold: var(--fw-m-bold);
+	--fw-xtra: var(--fw-m-xtra);
+	font-size: 1.5rem;
+}
+[data-font~="large"] {font-size: 2rem;}
+
+[data-font~="slim"] {font-weight: var(--fw-slim);}
+[data-font~="norm"] {font-weight: var(--fw-norm);}
+b, abbr, [data-font~="semi"] {font-weight: var(--fw-semi);}
+strong, [data-font~="bold"] {font-weight: var(--fw-bold);}
+[data-font~="xtra"] {font-weight: var(--fw-xtra);}
+em, i, [data-font~="italic"] {font-style: italic;}
+
 [data-font~="gradient"] {
 	background: linear-gradient(
 		in oklab to bottom, var(--c-fg), 80%, var(--c-gradient)
@@ -660,8 +681,7 @@ div:has(.icon), a:has(.icon) {
 }
 
 .big-link {
-	font-weight: 350;
-	--font-weight-bold: 550;
+	font-weight: var(--fw-semi);
 }
 
 .btn-tab {

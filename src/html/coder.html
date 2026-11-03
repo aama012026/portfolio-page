@@ -3,19 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Mikkel">
-	<link rel="stylesheet" href="/assets/css/prism.css">
+	<meta name="author" content="Mikkel Alvheim Åse">
+	<meta name="keywords" content="portfolio,cv,web,coder,dev,developer,programmer,creative">
+
+	<link rel="stylesheet" href="/assets/css/font-faces.css">
 	<link rel="stylesheet" href="/assets/css/stil.css">
+	<link rel="stylesheet" href="/assets/css/prism.css">
+
 	<script src="/lib/prism.js"></script>
 	<script type="module" src="../../lib/datastar.js"></script>
 	<script type="module" src="../ts/web/coder.ts"></script>
-	<title>Mikkel - Coder</title>
+
+	<title>Mikkel Alvheim Åse - Coder</title>
 </head>
 
 <body class="coder primary">
 <header class="accent border-rule-bot" data-bg="lit">
 	<h1>
-		<a class ="no-underline" data-font="gradient" href="/">Mikkel</a>
+		<a class ="no-underline" data-font="gradient" href="/">Mikkel Alvheim Åse</a>
 	</h1>
 	<span class="divider border-gradient"></span>
 	<nav>
@@ -23,7 +28,7 @@
 			data-signals:_prev-y="0"
 			data-on:scroll__window__once__passive="el.open = false"
 		>
-			<summary data-font="gradient mono">Coder</summary>
+			<summary class="font-mono" data-font="gradient">Coder</summary>
 			<ul>
 				<li><a href="/composer">composer</a></li>
 			</ul>
@@ -33,20 +38,52 @@
 
 <main>
 	<section id="greeting" class="text">
-		<h1 data-font="gradient">Hey! You're here a little early...</h1>
+		<h1 class="font-alt" data-font="gradient">Hey! You're here a little early...</h1>
 		<p>Things are still being set up around here, and so everything is a little rough around the edges.
 			You can find this page's source code below, or, perhaps more insightful,
 			check out my WIP Riftbound collection tracker
 			<a target="_self" href="https://rb-collection-tracker.alvheimase.com">here</a>
-			(<span class="italics">more about the project below</span>).
+			(<span class="italic">more about the project below</span>).
+		</p>
+		<p class="font-reg" data-font="small"><span>The quick brown fox jumps over the lazy dog</span>
+			<span data-font="italic">and feels as if he were in the
+			<b>seventh heaven of typography</b></span>
+			<a><b>together with <span class="font-mono">Hermann Zapf</span></b></a>,
+			<span class="font-alt">The most
+				<span data-font="italic">famous</span> <span data-font="bold">artist</span> of the 1900s.
+			</span>1900s.
+		</p>
+		<p class="font-reg"><span>The quick brown fox jumps over the lazy dog</span>
+			<span data-font="italic">and feels as if he were in the
+			<b>seventh heaven of typography</b></span>
+			<a><b>together with <span class="font-mono">Hermann Zapf</span></b></a>,
+			<span class="font-alt">The most
+				<span data-font="italic">famous</span> <span data-font="bold">artist</span> of the 1900s.
+			</span>1900s.
+		</p>
+		<p class="font-reg" data-font="medium"><span>The quick brown fox jumps over the lazy dog</span>
+			<span data-font="italic">and feels as if he were in the
+			<b>seventh heaven of typography</b></span>
+			<a><b>together with <span class="font-mono">Hermann Zapf</span></b></a>,
+			<span class="font-alt">The most
+				<span data-font="italic">famous</span> <span data-font="bold">artist</span> of the 1900s.
+			</span>1900s.
+		</p>
+		<p class="font-reg" data-font="large"><span>The quick brown fox jumps over the lazy dog</span>
+			<span data-font="italic">and feels as if he were in the
+			<b>seventh heaven of typography</b></span>
+			<a><b>together with <span class="font-mono">Hermann Zapf</span></b></a>,
+			<span class="font-alt">The most
+				<span data-font="italic">famous</span> <span data-font="bold">artist</span> of the 1900s.
+			</span>1900s.
 		</p>
 	</section>
 	<section id="values" class="accent" data-bg="mid">
-		<hgroup class="text">
+		<hgroup class="text font-alt">
 			<h1 style="display: none;" aria-hidden="true">Values</h1>
-			<p data-font="gradient accent">Accessibility</p>
-			<p data-font="gradient accent">Performance</p>
-			<p data-font="gradient accent">Security</p>
+			<p data-font="gradient">Accessibility</p>
+			<p data-font="gradient">Performance</p>
+			<p data-font="gradient">Security</p>
 		</hgroup>
 		<p class="text">These features are often lacking in the modern web,
 			so I try to focus on them in my learning and incorporate them in my work.
@@ -143,7 +180,7 @@
 	</section>
 	<section id="rb-collection-tracker" class="coder accent" data-bg="mid">
 		<div class="text">
-			<h2 data-font="gradient accent">Riftbound Collection Tracker</h2>
+			<h2 class="font-alt" data-font="gradient">Riftbound Collection Tracker</h2>
 			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a>
 				WIP project tracks your collection of Riftbound TCG cards.
 				It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
@@ -165,9 +202,7 @@
 				>mariaDB</a>
 				relational database colocated on the server and communicating over localhost.
 			</p>
-			<p>There's a <span class="italic">sort bar</span>
-				above the table and a
-				<span class="italic">filter bar</span> beneath.
+			<p>There's a <b>sort bar</b> above the table and a <b>filter bar</b> beneath.
 				The boxes in the sort bar can be dragged to reorder the sort order.
 				This is all done through Datastar signals, queried on the backend and patched on the client with a morphing strategy over SSE.
 				The filters query and card count tracking has yet to be implemented.
@@ -195,9 +230,9 @@
 
 		</div>
 		<section class="text">
-			<h3 data-font="gradient accent">Data-star: Making a performant but responsive website</h3>
+			<h3 class="font-alt" data-font="gradient">Data-star: Making a performant but responsive website</h3>
 			<p>Datastar is a tiny but powerful frontend framework
-				(<span class="italic">the entire library is a single 11.90KiB file</span>)
+				(<span data-font="italic">the entire library is a single 11.90KiB file</span>)
 				that replaces the need for heavy libraries like react while also outclassing the competition in raw performance.
 				It does this somewhat ironically with two core principles:
 			</p>
@@ -207,11 +242,11 @@
 			</ul>
 			<p>It might seem strange for a frontend library's main feature to be its backend approach,
 				but it does a couple of things for the developer and a couple of others for performance.
-				Firstly, by moving most of the state (<span class="italic">leaving UI</span>) to the backend,
+				Firstly, by moving most of the state (<span data-font="italic">leaving UI</span>) to the backend,
 				the need for a clientside script often largely disappears or dramatically simplifies
-				(<span class="italic">the card gallery has no script besides the Datastar library</span>).
+				(<span data-font="italic">the card gallery has no script besides the Datastar library</span>).
 				In its place, datastar uses custom <code>data-*</code>
-				attributes (<span class="italic">hence the name</span>),
+				attributes (<span data-font="italic">hence the name</span>),
 				to register signals in the <abbr title="Document Object Model">DOM</abbr>.
 				Take a look at the html for a sortbox,
 				the slanted boxes on the top of the card table that you can drag to reorder the sort priority on the table:
@@ -257,15 +292,15 @@
 					lets us register an event listener with access to our datastar signals.
 					The signals are automatically created if they don't exist, and look like
 					<code>$signalName</code> if inside an expression
-					(<span class="italic">Datastar converts between
-						<span data-font="mono">kebab-case</span> and
-						<span data-font="mono">camelCase</span>
-						for signal names in attributes and expressions in order to follow the HTML-specs</span
-					>).
+					(<span data-font="italic">Datastar converts between
+						<span class="font-mono">kebab-case</span> and
+						<span class="font-mono">camelCase</span>
+						for signal names in attributes and expressions in order to follow the HTML-specs
+					</span>).
 				</li>
 				<li><code>@get('/cards')</code>
 					sends a request to the server with the specified path.
-					All signals are included in the request (<span class="italic"
+					All signals are included in the request (<span data-font="italic"
 					>as part of the url in case of the GET action</span>)
 					unless they begin with <code>_</code>.
 				</li>
@@ -295,8 +330,8 @@
 				In fact, the creators of Datastar claims, and demonstrates on their website, that with
 				<abbr title="Server-sent Events">SSE</abbr>
 				it is entirely doable to update the website at monitor refresh rates
-				(<span class="italic">144hz was the claim</span>) from the backend.</p
-			>
+				(<span data-font="italic">144hz was the claim</span>) from the backend.
+			</p>
 			<p>Datastar has two types of server-sent events:</p>
 			<pre><code id="patch-signals" class="language-ts line-numbers"
 >export function patchSignals(
@@ -309,12 +344,13 @@
 	)
 	return ssEvent
 }</code></pre>
-			<p>The <code class="nowrap">datastar-patch-signals</code> event can patch, update and remove signals.
+			<p>The <code class="nowrap">datastar-patch-signals</code>
+				event can patch, update and remove signals.
 				The naive function above also illustrates plainly the simple buildup of a
 				<abbr title="Server-sent event">SSE</abbr>.
 				Below is a function generating the second event type,
-				<code class="nowrap">datastar-patch-elements</code>.</p
-			>
+				<code class="nowrap">datastar-patch-elements</code>.
+			</p>
 			<pre><code class="language-ts line-numbers"
 >export function patchElements(
 	elements: string, modifiers?: DatastarEventModifiers
@@ -457,7 +493,7 @@ async function* streamCardRows(rows: string[]) {
 	}
 	return null
 }</code></pre>
-		<p>So how does this compare to just sending all the card rows in a normal response?</p>
+		<p><b><i>So how does this compare to just sending all the card rows in a normal response?</i></b></p>
 		<p>Let's start with the baseline. From our server timings,
 			we know that about 30-50ms is spent querying our database.
 			Our database is a completely unoptimized, out of the box
@@ -474,7 +510,7 @@ async function* streamCardRows(rows: string[]) {
 			bringing the total time from reordering cards to seeing new cards on screen close to 3s!
 		</p>
 		<p>Converting to a stream
-			(<span class="italic">But still just sending a single monolithic event</span>)
+			(<span data-font="italic">But still just sending a single monolithic event</span>)
 			and adding text compression reduced the receiving time to around 200ms-300ms,
 			but upped our waiting time to about 200-250ms.
 			We shaved off around 500ms on average, which is huge,
@@ -514,8 +550,8 @@ async function* streamCardRows(rows: string[]) {
 	</section>
 </main>
 
-<footer class="mid-tone">
-	<a class="icon-link" href="mailto:aama012026@gmail.com">
+<footer class="mid-tone" data-font="small">
+	<a class="icon-link" href="mailto:mikkel@alvheimase.com">
 		<div class="at-icon">
 			<svg class="icon" viewBox="0 0 24 24">
 				<circle cx="12" cy="12" r="4"/>
