@@ -46,6 +46,7 @@
 			(<span class="italic">more about the project below</span>).
 		</p>
 	</section>
+
 	<section id="values" class="accent" data-bg="mid">
 		<hgroup class="text font-alt">
 			<h1 style="display: none;" aria-hidden="true">Values</h1>
@@ -61,6 +62,7 @@
 			an awareness we take with us into designing from the beginning.
 		</p>
 	</section>
+
 	<section id="technologies">
 		<h1 style="display: none;" aria-hidden="true">Technologies</h1>
 		<div class="tech-icons">
@@ -70,16 +72,13 @@
 						src="/assets/icons/technologies/html5-logo.svg"
 					>
 				</a>
-				<a target="_blank"
+				<a target="_blank" alt
 					href="https://developer.mozilla.org/en-US/docs/Web/CSS"
 				>
 					<img data-badge="css" alt="CSS 3"
 						src="/assets/icons/technologies/css-lettermark.svg"
 					>
 				</a>
-				<!--<img srcset="/assets/icons/technologies/ts-lettermark-128.svg 128w, /assets/icons/technologies/ts-lettermark-256 256w, /assets/icons/technologies/ts-lettermark-512.svg 512w"
-					src="/assets/icons/technologies/ts-lettermark-128.svg" alt="TypeScript"
-				>-->
 				<a target="_blank" href="https://www.typescriptlang.org/">
 					<img data-badge="ts" alt="TypeScript"
 						src="/assets/icons/technologies/ts-lettermark-128.svg"
@@ -101,25 +100,19 @@
 						src="/assets/icons/technologies/cs-logo.svg"
 					>
 				</a>
-				<a target="_blank"
-					href="https://odin-lang.org/"
-				>
+				<a target="_blank" href="https://odin-lang.org/">
 					<img data-badge="odin" alt="Odin"
 						src="/assets/icons/technologies/odin-lettermark.svg"
 					>
 				</a>
 			</div>
 			<div>
-				<a target="_blank"
-					href="https://data-star.dev/"
-				>
+				<a target="_blank" href="https://data-star.dev/">
 					<img data-badge="datastar" alt="Data-star"
 						src="/assets/icons/technologies/data-star-rocket.png"
 					>
 				</a>
-				<a target="_blank"
-					href="https://react.dev/"
-				>
+				<a target="_blank" href="https://react.dev/">
 					<img data-badge="react" alt="React"
 						src="/assets/icons/technologies/react-logo-light.svg"
 					>
@@ -146,9 +139,10 @@
 			</div>
 		</div>
 	</section>
+
 	<section id="rb-collection-tracker" class="coder accent" data-bg="mid">
+		<h2 class="text font-alt" data-font="gradient">Riftbound Collection Tracker</h2>
 		<div class="text">
-			<h2 class="font-alt" data-font="gradient">Riftbound Collection Tracker</h2>
 			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a>
 				WIP project tracks your collection of Riftbound TCG cards.
 				It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
@@ -165,7 +159,7 @@
 					href="https://data-star.dev/" target="_blank"
 				>Datastar</a> as its framework.
 				The data is stored in and queried from a
-				<a	class="no-underline big-link" data-font="gradient"
+				<a class="no-underline big-link" data-font="gradient"
 					href="https://mariadb.com/docs" target="_blank"
 				>mariaDB</a>
 				relational database colocated on the server and communicating over localhost.
@@ -195,8 +189,8 @@
 			<p><br><b>You are, of course, very welcome to hit me up with any questions,
 				and I am more than happy to sit down and talk through the project and my thinking.</b>
 			</p>
-
 		</div>
+
 		<section class="text">
 			<h3 class="font-alt" data-font="gradient">Data-star: Making a performant but responsive website</h3>
 			<p>Datastar is a tiny but powerful frontend framework
@@ -295,7 +289,9 @@
 				It is also incredibly good at compressing and decompressing text with a number of algorithms,
 				so by compressing our responses we get both fast and efficient data transfers.
 			</p>
-			<p>Secondly, we can minimize the connection overhead and time between sending a request and receiving the start of the response by keeping a long-lived connection open and sending an event stream.
+			<p>Secondly, we can minimize the connection overhead and time between
+				sending a request and receiving the start of the response by
+				keeping a long-lived connection open and sending an event stream.
 				In fact, <abbr title="Server-sent Events">SSE</abbr>
 				is the primary and recommended way to update the client from the backend in Datastar.
 				The pitch is twofold: As mentioned above, by updating the
@@ -537,6 +533,7 @@ async function* streamCardRows(rows: string[]) {
 			</p>
 		</section>
 	</section>
+
 	<section class="source-code">
 		<h2>Source Code</h2>
 		<div class="tabline" data-signals:active-tab="1">
