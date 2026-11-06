@@ -1,0 +1,20 @@
+[fmt]
+ignorePatterns = ['lib/', '*.css', '*.html']
+sortImports = true
+sortPackageJson = true
+
+printWidth = 90
+tabWidth = 4
+useTabs = true
+singleQuote = true
+semi = false
+quoteProps = 'consistent'
+trailingComma = 'none'
+bracketSpacing = false
+objectWrap = 'collapse'
+bracketSameLine = false
+arrowParens = 'always'
+endOfLine = 'lf'
+experimentalTernaries = true
+singleAttributePerLine = false
+htmlWhitespaceSensitivity = 'strict'

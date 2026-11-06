@@ -307,7 +307,7 @@
 			<figure>
 				<pre><code id="patch-signals" class="language-ts line-numbers"
 >export function patchSignals(
-	data: Record<string, unknown>, onlyIfMissing: boolean = false
+	data: Record&lt;string, unknown&gt;, onlyIfMissing: boolean = false
 ): string {
 	const ssEvent = (
 		`event: datastar-patch-signals\n` +
@@ -404,11 +404,11 @@ async function* streamCardRows(rows: string[]) {
 				<pre><code id="sse-response" class="language-ts line-numbers"
 >export function sseResponse(
 	req: Request,
-	events: AsyncIterable<string>,
+	events: AsyncIterable&lt;string&gt;,
 	serverTimings: string[],
 	...preferredEncoding: Encoding[]
 ): Response {
-	const headers: Record<string, string> = {
+	const headers: Record&lt;string, string&gt; = {
 		'Content-Type': 'text/event-stream',
 		'Cache-Control': 'no-cache',
 		'Vary': 'Accept-Encoding',
@@ -430,7 +430,7 @@ async function* streamCardRows(rows: string[]) {
 	req.signal.addEventListener('abort', () => stage.destroy(), {once: true})
 
 	return new Response(
-		Readable.toWeb(stage) as ReadableStream<Uint8Array>, {headers}
+		Readable.toWeb(stage) as ReadableStream&lt;Uint8Array&gt;, {headers}
 	)
 }</code></pre>
 				<figcaption>sseResponse function from
@@ -465,7 +465,7 @@ async function* streamCardRows(rows: string[]) {
 	req: Request, ...preferred: Encoding[]
 ): Encoding | null {
 	const header = req.headers.get('accept-encoding') ?? ''
-	const accepted = new Map<string, number>()
+	const accepted = new Map&lt;string, number&gt;()
 	for(const part of header.split(',')) {
 		const [name, ...params] = part.trim().toLowerCase().split(';')
 		if(!name) {

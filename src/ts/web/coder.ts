@@ -1,44 +1,41 @@
-declare const Prism: any;
+declare const Prism: any
 const EXAMPLES_PATH = '/assets/code-examples'
 
-type CodePage = {
-	sourceText: string,
-	view: Element,
-}
+type CodePage = {sourceText: string; view: Element}
 
 const codeElements = {
 	coderHtml: {
 		sourceText: await getFileContent('/code/html/coder.html'),
-		view: queryExistingElement('#coder-html'),
+		view: queryExistingElement('#coder-html')
 	},
 	stilCss: {
 		sourceText: await getFileContent('/code/css/stil.css'),
-		view: queryExistingElement('#stil-css'),
+		view: queryExistingElement('#stil-css')
 	},
 	mainTs: {
 		sourceText: await getFileContent('/code/ts/coder.ts'),
-		view: queryExistingElement('#main-ts'),
+		view: queryExistingElement('#main-ts')
 	}
-} satisfies Record<string, CodePage>;
-type TabKey = keyof typeof codeElements;
+} satisfies Record<string, CodePage>
+type TabKey = keyof typeof codeElements
 
-renderSourceCode();
+renderSourceCode()
 
 async function getFileContent(path: string): Promise<string> {
-	return await fetch(path).then(r => r.text());
+	return await fetch(path).then((r) => r.text())
 }
 
 function queryExistingElement(selector: string): Element {
-	const element = document.querySelector(selector);
+	const element = document.querySelector(selector)
 	if (!element) {
-		throw new TypeError(`Could not find element for ${selector}. Element is null!`);
+		throw new TypeError(`Could not find element for ${selector}. Element is null!`)
 	}
-	return element;
+	return element
 }
 
 function renderSourceCode(): void {
-	(Object.keys(codeElements) as TabKey[]).forEach(key => {
-		codeElements[key].view.textContent = codeElements[key].sourceText;
-		Prism.highlightElement(codeElements[key].view);
-	});
+	;(Object.keys(codeElements) as TabKey[]).forEach((key) => {
+		codeElements[key].view.textContent = codeElements[key].sourceText
+		Prism.highlightElement(codeElements[key].view)
+	})
 }

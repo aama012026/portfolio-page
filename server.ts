@@ -1,6 +1,6 @@
-import index from './src/html/index.html'
 import coder from './src/html/coder.html'
 import composer from './src/html/composer.html'
+import index from './src/html/index.html'
 
 const server = Bun.serve({
 	port: 3001,
@@ -8,12 +8,12 @@ const server = Bun.serve({
 		'/': index,
 		'/coder': coder,
 		'/composer': composer,
-		'/code/:type/:file': async req => new Response(
-			await Bun.file(`./out/code/${req.params.type}/${req.params.file}`).text()
-		),
-		'/assets/:file': async req => new Response(
-			Bun.file(`./assets/${req.params.file}`)
-		)
+		'/code/:type/:file': async (req) =>
+			new Response(
+				await Bun.file(`./out/code/${req.params.type}/${req.params.file}`).text()
+			),
+		'/assets/:file': async (req) =>
+			new Response(Bun.file(`./assets/${req.params.file}`))
 	}
 })
 
