@@ -12,7 +12,7 @@ const server = Bun.serve({
 			new Response(
 				await Bun.file(`./out/code/${req.params.type}/${req.params.file}`).text()
 			),
-		'/assets/*': {dir: '/assets'}
+		'/assets/*': {dir: './assets'}
 	}
 })
 
