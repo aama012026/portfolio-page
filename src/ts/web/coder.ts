@@ -1,4 +1,4 @@
-declare const Prism: any
+import Prism from "#/lib/prism";
 const EXAMPLES_PATH = '/assets/code-examples'
 
 type CodePage = {sourceText: string; view: Element}
