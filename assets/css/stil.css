@@ -126,7 +126,7 @@
 		--c-primary-lit: color-mix(in oklab, var(--c-paper), white 33%);
 		--c-primary-mid: var(--c-paper);
 		--c-primary-dim: var(--c-parchment);
-		--c-primary-brd: var(--c-parchment);
+		--c-primary-brd: var(--c-hide);
 		--c-accent-lit: var(--c-indigo-hov);
 		--c-accent-mid: var(--c-indigo-dim);
 		--c-accent-dim: var(--c-midnight);
@@ -142,7 +142,7 @@
 		--c-accent-lit: color-mix(in oklab, var(--c-paper), white 33%);
 		--c-accent-mid: var(--c-paper);
 		--c-accent-dim: var(--c-parchment);
-		--c-accent-brd: var(--c-parchment);
+		--c-accent-brd: var(--c-hide);
 		--c-gradient: var(--c-lavender-mid-new);
 	}
 
@@ -180,6 +180,7 @@
 
 	/* Global defaults */
 	font-weight: var(--fw-norm);
+	scroll-behavior: smooth;
 }
 
 /* -ANIMATION---------------------------------------------------------------- */
@@ -255,7 +256,7 @@ details {
 
 img.icon {height: 1em;}
 
-.text, pre {
+section.text > *:not(section), pre {
 	--min-gap: 2rem;
 	margin-left:  auto;
 	margin-right: auto;
@@ -265,7 +266,10 @@ img.icon {height: 1em;}
 	max-width: calc(55rem + var(--min-gap));
 }
 
-section {padding: 2em 0 3em;}
+section {
+	scroll-margin-top: 3.5em;
+	padding: 2em 0 3em;
+}
 
 .tech-icons {
 	font-size: 1rem;
@@ -418,7 +422,7 @@ img[data-badge="mariadb"] {height: 3em;}
 	}
 }
 
-#technologies {padding: 3em 0 3em;}
+#technologies {padding: 1.5em 0 1em;}
 
 /* -ROLES-------------------------------------------------------------------- */
 .divider {
@@ -599,7 +603,6 @@ h1 {
 	margin-bottom: 0.5lh;
 	font-weight: var(--fw-norm);
 }
-
 h2 {
 	font-size: 3rem;
 	margin-bottom: 2rem;

@@ -41,32 +41,6 @@
 </header>
 
 <main>
-	<section id="greeting" class="text">
-		<h1 class="font-alt" data-font="gradient">Hey! You're here a little early...</h1>
-		<p>Things are still being set up around here, and so everything is a little rough around the edges.
-			You can find this page's source code below, or, perhaps more insightful,
-			check out my WIP Riftbound collection tracker
-			<a target="_self" href="https://rb-collection-tracker.alvheimase.com">here</a>
-			(<span class="italic">more about the project below</span>).
-		</p>
-	</section>
-
-	<section id="values" class="accent" data-bg="mid">
-		<hgroup class="text font-alt">
-			<h1 style="display: none;" aria-hidden="true">Values</h1>
-			<p data-font="gradient">Accessibility</p>
-			<p data-font="gradient">Performance</p>
-			<p data-font="gradient">Security</p>
-		</hgroup>
-		<p class="text">These features are often lacking in the modern web,
-			so I try to focus on them in my learning and incorporate them in my work.
-			It is not about optimization and eeking out every last drop of performance.
-			It is not about limiting ourselves to creating ugly websites in pure html.
-			It is about the low hanging fruits, a shift in mindset and priorities,
-			an awareness we take with us into designing from the beginning.
-		</p>
-	</section>
-
 	<section id="technologies">
 		<h1 style="display: none;" aria-hidden="true">Technologies</h1>
 		<div class="tech-icons">
@@ -144,58 +118,142 @@
 		</div>
 	</section>
 
-	<section id="rb-collection-tracker" class="coder accent" data-bg="mid">
-		<h2 class="text font-alt" data-font="gradient">Riftbound Collection Tracker</h2>
-		<div class="text">
-			<p><a href="https://rb-collection-tracker.alvheimase.com">This</a>
-				WIP project tracks your collection of Riftbound TCG cards.
-				It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
-				>lexer</a> and <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
-				>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.
-			</p>
-			<p>The project is written in
-				<a class="no-underline big-link" data-font="gradient"
-					ref="https://www.typescriptlang.org/" target="_blank"
-				>typescript</a>, sits on a hetzner server in germany running debian, and is built in
-				<a class="no-underline big-link" data-font="gradient"
-					href="https://bun.com/" target="_blank">bun</a> with
-				<a class="no-underline big-link" data-font="gradient"
-					href="https://data-star.dev/" target="_blank"
-				>Datastar</a> as its framework.
-				The data is stored in and queried from a
-				<a class="no-underline big-link" data-font="gradient"
-					href="https://mariadb.com/docs" target="_blank"
-				>mariaDB</a>
-				relational database colocated on the server and communicating over localhost.
-			</p>
-			<p>There's a <b>sort bar</b> above the table and a <b>filter bar</b> beneath.
-				The boxes in the sort bar can be dragged to reorder the sort order.
-				This is all done through Datastar signals, queried on the backend and patched on the client with a morphing strategy over SSE.
-				The filters query and card count tracking has yet to be implemented.
-			</p>
-			<p>If you're interested in looking at Datastar in action, take a look at the
-				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
-				>templates.html</a> file and look for data-attributes like
-				<code>data-on:&lt;event&gt;</code>,
-				<code>data-signals:&lt;signal-name&gt;</code>,
-				<code>data-bind="&lt;expression&gt;"</code>, etc.
-				The file includes custom variable markup used by my tiny HTML builder to generate js HTML-string construction functions.
-			</p>
-			<p>If you want to look at the backend side, take a look at the SSE construction in
-				<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
-				>sse.ts</a>.
-				The events are streamed to the client with a simple ReadableStream object.
-				To see my go at writing SQL stored procedures and functions, have a look at either
-				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank">createProcedures.ts</a> or
-				<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank">createFunctions.ts</a>
-				under src/schema/.
-			</p>
-			<p><br><span data-font="semi">You are, of course, very welcome to hit me up with any questions,
-				and I am more than happy to sit down and talk through the project and my thinking.</span>
-			</p>
-		</div>
+	<section id="greeting" class="text">
+		<h1 class="font-alt" data-font="gradient">Hey! You're here a little early...</h1>
+		<p>Things are still being set up around here, and so everything is a little rough around the edges.
+			You can find this page's source code below, or, perhaps more insightful,
+			check out my WIP Riftbound collection tracker
+			<a target="_self" href="https://rb-collection-tracker.alvheimase.com">here</a>
+			and my writeup on it <a href="#rb-collection-tracker">below</a>.
+			(<span class="italic">more about the project below</span>).
+		</p>
+	</section>
 
-		<section class="text">
+	<section id="values" class="accent text" data-bg="mid">
+		<hgroup class="font-alt">
+			<h1 style="display: none;" aria-hidden="true">Values</h1>
+			<p data-font="gradient">Accessibility</p>
+			<p data-font="gradient">Performance</p>
+			<p data-font="gradient">Security</p>
+		</hgroup>
+		<p>These features are often lacking in the modern web,
+			so I try to focus on them in my learning and incorporate them in my work.
+			It is not about optimization and eeking out every last drop of performance.
+			It is not about limiting ourselves to creating ugly websites in pure html.
+			It is about the low hanging fruits, a shift in mindset and priorities,
+			an awareness we take with us into designing from the beginning.
+		</p>
+	</section>
+	<section id="about" class="accent text" data-bg="mid">
+		<h2 class="font-alt" data-font="gradient">Who am I?</h2>
+		<p><span data-font="semi">I'm a composer by education, currently
+			transitioning into programming and full-stack web dev.</span>
+			You can check out my progress
+			<a href="#rb-collection-tracker">below</a>
+			(<span data-font="italic">or on my
+			<a target="_blank" href="https://github.com/aama012026">GitHub</a>
+			if you prefer just browsing code</span>).
+		</p>
+		<p>There's a lot of overlap between the thought-patterns and strategies
+			of the craft of the professional composer and systems architect.
+			This is evident in shared vocabulary: We <em>compose</em> a system,
+			<em>abstract</em> components, <em>translate</em>
+			code from one domain to another, etc.
+			As well as enjoying this kind of abstract thinking,
+			I've also specialized in electro-acoustic music and live-electronics,
+			getting my first real-world coding experience programming real-time
+			and offline <abbr title="Digital Signal Processing">DSP</abbr>.
+			That kind of work naturally requires a lower-level brain and solid
+			troubleshooting strategy,
+			and so I find myself working well at both ends of the spectrum.
+		</p>
+		<p>In accordance with my interest for the values above and in light of
+			the vast amount of possibly important things to know, I try to approach
+			everything I learn with curiosity, focusing on utilizing the
+			fundamental building blocks of the web to their fullest and
+			always asking "<i>why?</i>" when encountering a new API, Library or technology.
+			This is not a refusal to adopt any specific technology,
+			but a desire to understand the <em>roots</em>
+			of a requirement and the <em>need</em> for a dependency.
+			The same holds true at an application level:
+			"<i>Why are these resources in use?</i>", "<i>Why is this so slow/big?</i>" or
+			"<i>What is the back-of-the-envelope expected performance here?</i>".
+			<span data-font="semi">I believe that this leads to both deeper
+			<em>and</em> faster understanding in the long run.</span>
+			As an added benefit, understanding the underlying technology
+			usually have the effect of accelerating the learning of any
+			<em>particular</em> library or framework.
+		</p>
+	</section>
+	<section id="rb-collection-tracker" class="coder primary text" data-bg="mid">
+		<h2 class="font-alt" data-font="gradient">Riftbound Collection Tracker</h2>
+		<p><a href="https://rb-collection-tracker.alvheimase.com">This</a>
+			WIP project tracks your collection of Riftbound TCG cards.
+			It includes a <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlLexer.ts"
+			>lexer</a> and <a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/rbmlParser.ts"
+			>parser</a> that interprets the rules text on the cards in order to hide reminder text to be revealed on hover, mark up keywords, etc.
+		</p>
+		<p>The project is written in
+			<a class="no-underline big-link" data-font="gradient"
+				ref="https://www.typescriptlang.org/" target="_blank"
+			>Typescript</a>, sits on a Hetzner server in germany running Debian, and is built in
+			<a class="no-underline big-link" data-font="gradient"
+				href="https://bun.com/" target="_blank">Bun</a> with
+			<a class="no-underline big-link" data-font="gradient"
+				href="https://data-star.dev/" target="_blank"
+			>Datastar</a> as its framework.
+			The data is stored in and queried from a
+			<a class="no-underline big-link" data-font="gradient"
+				href="https://mariadb.com/docs" target="_blank"
+			>MariaDB</a>
+			relational database colocated on the server and communicating over localhost.
+		</p>
+		<p>There's a <b>sort bar</b> above the cards table and a
+			<b>filter bar</b> beneath.
+			The boxes in the sort bar can be dragged to reorder the sort order.
+			This is all done through Datastar signals,
+			queried on the backend and patched on the client with a morphing strategy over
+			<abbr title="Server-sent Events">SSE</abbr>.
+			You can filter the table from the filter bar or by toggling the
+			badges directly on the card rows. Click the
+			<b>card name</b> in a row to view the card's details and versions.
+			The database uses mock data in the documented shape of the official Riot DTO,
+			although no sample response was available.
+			Multiple errors in the data and procedural corrections will be
+			removed once the site obtains an official API key.
+			In the meantime, I recommend filtering on the
+			<b>Legend</b> type to see the card actually change when switching versions.
+			The card count tracking (the collection part) has yet to be implemented.
+		</p>
+		<p>If you're interested in looking at Datastar in action,
+			you can read my writeup on how I use it in the project
+			<a href="#rb-datastar">below</a> or take a look at the
+			<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/html/templates.html"
+			>templates.html</a> file and look for data-attributes like
+			<code>data-on:&lt;event&gt;</code>,
+			<code>data-signals:&lt;signal-name&gt;</code>,
+			<code>data-bind="&lt;expression&gt;"</code>, etc.
+			The file includes custom variable markup used by my tiny
+			<abbr title="Hypertext Markup Language">HTML</abbr>
+			builder to generate js HTML-string construction functions.
+		</p>
+		<p>If you want to look at the backend side I run through some of it in the datastar section below,
+			but you can take a look at the SSE construction in
+			<a target="_blank" href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/modules/sse.ts"
+			>sse.ts</a> as a good entry point.
+			The events are streamed to the client in a text-compressed, asynchronous stream.
+		</p>
+		<p>
+			To see my go at writing <abbr title="Structured Query Language">SQL</abbr> stored procedures and functions, have a look at either
+			<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createProcedures.ts" target="_blank">createProcedures.ts</a> or
+			<a href="https://github.com/aama012026/rb-collection-tracker/blob/main/src/schema/createFunctions.ts" target="_blank">createFunctions.ts</a>
+			under src/schema/.
+		</p>
+		<p><span data-font="semi">You are, of course, very welcome to hit me up with any questions,
+			and I am more than happy to sit down and talk through the project and my thinking.</span>
+		</p>
+
+		<section id="rb-datastar" class="text accent" data-bg="mid">
 			<h3 class="font-alt" data-font="gradient">Data-star: Making a performant but responsive website</h3>
 			<p>Datastar is a tiny but powerful frontend framework
 				(<span data-font="italic">the entire library is a single 11.90KiB file</span>)
