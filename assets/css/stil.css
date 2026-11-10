@@ -135,7 +135,6 @@
 	}
 
 	& .coder {
-
 		--c-primary-lit: var(--c-indigo-hov);
 		--c-primary-mid: var(--c-indigo-dim);
 		--c-primary-dim: var(--c-midnight);
@@ -698,3 +697,5 @@ a {
 		}
 	}
 }
+
+.icon-link span {color: var(--c-link);}
